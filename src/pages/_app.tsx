@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || (({ children }) => <>{children}</>);
 
-  const [isWallet, setWallet] = useState(false);
+  const [wallet, setWallet] = useState({ isWallet: true });
 
   useEffect(() => {
     handleNamiWallet();
@@ -17,11 +17,11 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
     const isEnabled = await window.cardano.isEnabled();
 
     if (isEnabled) {
-      setWallet(true);
+      setWallet({ isWallet: true });
     }
   };
 
-  const value = { isWallet, setWallet };
+  const value = { wallet, setWallet };
 
   return (
     <WalletContext.Provider value={value}>

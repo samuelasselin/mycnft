@@ -19,14 +19,14 @@ import { useWallet } from "../context/UseWallet";
 
 export const NavBar: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isWallet, setWallet } = useWallet();
+  const { wallet, setWallet } = useWallet();
 
   const handleConnectWallet = async () => {
     try {
       const signWallet = await window.cardano.enable();
       setWallet(signWallet);
     } catch (error) {
-      setWallet(false);
+      setWallet({ isWallet: false });
     }
   };
 
@@ -37,7 +37,7 @@ export const NavBar: React.FC = () => {
           <Box>MYNCFT</Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              {!isWallet ? (
+              {!wallet ? (
                 <Button
                   colorScheme={"teal"}
                   onClick={() => handleConnectWallet()}
