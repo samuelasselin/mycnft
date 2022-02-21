@@ -17,7 +17,6 @@ import {MoonIcon, SunIcon} from '@chakra-ui/icons';
 import React from "react";
 import {useWallet} from '../context/UseWallet';
 
-
 export const NavBar: React.FC = () => {
     const {colorMode, toggleColorMode} = useColorMode();
     const {isWallet, setWallet} = useWallet()
