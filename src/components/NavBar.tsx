@@ -21,6 +21,15 @@ export const NavBar: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isWallet, setWallet } = useWallet();
 
+  const handleConnectWallet = async () => {
+    try {
+      const signWallet = await window.cardano.enable();
+      setWallet(signWallet);
+    } catch (error) {
+      setWallet(false);
+    }
+  };
+
   return (
     <>
       <Box bg={useColorModeValue("gray.200", "gray.900")} px={4}>
@@ -31,7 +40,7 @@ export const NavBar: React.FC = () => {
               {!isWallet ? (
                 <Button
                   colorScheme={"teal"}
-                  onClick={() => setWallet(!isWallet)}
+                  onClick={() => handleConnectWallet()}
                 >
                   Connect wallet
                 </Button>

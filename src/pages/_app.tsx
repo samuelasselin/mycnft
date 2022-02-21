@@ -11,12 +11,10 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
 
   useEffect(() => {
     handleNamiWallet();
-
   }, []);
 
   const handleNamiWallet = async () => {
-    const namiWallet = window.cardano;
-    const isEnabled = await namiWallet.isEnabled();
+    const isEnabled = await window.cardano.isEnabled();
 
     if (isEnabled) {
       setWallet(true);

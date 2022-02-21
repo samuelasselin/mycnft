@@ -11,7 +11,6 @@ import type {
 } from "next";
 import type { AppProps } from "next/app";
 
-
 declare module "next" {
   type NextLayoutComponentType<P = {}> = NextComponentType<
     NextPageContext,
