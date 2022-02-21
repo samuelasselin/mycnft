@@ -11,6 +11,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
 
   useEffect(() => {
     handleNamiWallet();
+
   }, []);
 
   const handleNamiWallet = async () => {
