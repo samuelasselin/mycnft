@@ -18,6 +18,7 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React from "react";
 import { useWallet } from "../context/UseWallet";
 import { namiWalletSignIn } from "../utils/NamiWallet";
+import truncateMiddle from "truncate-middle";
 
 export const NavBar: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -39,13 +40,10 @@ export const NavBar: React.FC = () => {
                   colorScheme={"teal"}
                   onClick={() => handleConnectWallet()}
                 >
-                  Connect wallet
+                  Connect with nami
                 </Button>
               ) : (
                 <Menu>
-                  <Box>
-                    <Text>{wallet.address}</Text>
-                  </Box>
                   <MenuButton
                     as={Button}
                     rounded={"full"}
@@ -70,7 +68,7 @@ export const NavBar: React.FC = () => {
                     </Center>
                     <br />
                     <Center>
-                      <p>Username</p>
+                      <Text>{truncateMiddle(wallet.address, 4, 8, "...")}</Text>
                     </Center>
                     <br />
                     <MenuDivider />

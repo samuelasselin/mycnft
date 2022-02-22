@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
   }, []);
 
   const handleNamiWallet = async () => {
-    const isEnabled = await window.cardano.isEnabled();
+    const isEnabled = await window.cardano.nami.isEnabled();
 
     if (isEnabled) {
       await namiWalletSignIn(setWallet);

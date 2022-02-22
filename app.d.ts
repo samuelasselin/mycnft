@@ -23,6 +23,7 @@ declare module "next/app" {
 
 declare global {
   interface Window {
+    nami: any;
     cardano: any;
   }
 }
