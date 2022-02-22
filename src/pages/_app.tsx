@@ -3,11 +3,12 @@ import theme from "../theme";
 import { AppLayoutProps } from "next/app";
 import { WalletContext } from "../context/UseWallet";
 import { useEffect, useState } from "react";
+import { namiWalletSignIn } from "../utils/NamiWallet";
 
 function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || (({ children }) => <>{children}</>);
 
-  const [wallet, setWallet] = useState({ isWallet: true });
+  const [wallet, setWallet] = useState({ isWallet: false });
 
   useEffect(() => {
     handleNamiWallet();
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
     const isEnabled = await window.cardano.isEnabled();
 
     if (isEnabled) {
-      setWallet({ isWallet: true });
+      await namiWalletSignIn(setWallet);
     }
   };
 

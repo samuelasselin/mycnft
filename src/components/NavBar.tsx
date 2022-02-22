@@ -12,22 +12,19 @@ import {
   Stack,
   useColorMode,
   Center,
+  Text,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React from "react";
 import { useWallet } from "../context/UseWallet";
+import { namiWalletSignIn } from "../utils/NamiWallet";
 
 export const NavBar: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { wallet, setWallet } = useWallet();
 
   const handleConnectWallet = async () => {
-    try {
-      const signWallet = await window.cardano.enable();
-      setWallet(signWallet);
-    } catch (error) {
-      setWallet({ isWallet: false });
-    }
+    await namiWalletSignIn(setWallet);
   };
 
   return (
@@ -37,7 +34,7 @@ export const NavBar: React.FC = () => {
           <Box>MYNCFT</Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              {!wallet ? (
+              {!wallet.isWallet ? (
                 <Button
                   colorScheme={"teal"}
                   onClick={() => handleConnectWallet()}
@@ -46,6 +43,9 @@ export const NavBar: React.FC = () => {
                 </Button>
               ) : (
                 <Menu>
+                  <Box>
+                    <Text>{wallet.address}</Text>
+                  </Box>
                   <MenuButton
                     as={Button}
                     rounded={"full"}

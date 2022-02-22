@@ -1,8 +1,13 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 
+export interface walletProps {
+  isWallet: boolean;
+  address?: string;
+}
+
 interface useWalletProps {
-  wallet: { isWallet: boolean; address?: string };
-  setWallet?: Dispatch<SetStateAction<{ isWallet: boolean }>>;
+  wallet: walletProps;
+  setWallet?: Dispatch<SetStateAction<walletProps>>;
 }
 
 export const WalletContext = createContext<useWalletProps>({
