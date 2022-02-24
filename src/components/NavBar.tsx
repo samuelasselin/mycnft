@@ -16,10 +16,9 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React from "react";
-import { useWallet } from "../context/UseWallet";
+import { useWallet } from "../hooks/UseWallet";
 import { namiWalletSignIn } from "../utils/NamiWallet";
 import truncateMiddle from "truncate-middle";
-import * as cardanoLib from "@emurgo/cardano-serialization-lib-browser";
 
 export const NavBar: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -28,14 +27,6 @@ export const NavBar: React.FC = () => {
   const handleConnectWallet = async () => {
     await namiWalletSignIn(setWallet);
   };
-
-  if (wallet.address) {
-    const a = cardanoLib.Address.from_bytes(
-      Buffer.from(wallet.address, "hex")
-    ).to_bech32();
-
-    console.log(a);
-  }
 
   return (
     <>
