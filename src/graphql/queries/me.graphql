@@ -1,0 +1,5 @@
+query Me($address: String) {
+    me(address: $address) {
+        address
+    }
+}

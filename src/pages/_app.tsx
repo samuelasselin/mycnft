@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
   const [wallet, setWallet] = useState({ isWallet: false });
 
   const client = new ApolloClient({
-    uri: "localhost:3001/graphql",
+    uri: "http://localhost:3001/graphql",
     cache: new InMemoryCache(),
   });
 
