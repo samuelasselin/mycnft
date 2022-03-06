@@ -9,7 +9,10 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || (({ children }) => <>{children}</>);
 
-  const [wallet, setWallet] = useState({ isWallet: false });
+  const [wallet, setWallet] = useState({
+    isWallet: false,
+    isInstalled: false,
+  });
 
   const client = new ApolloClient({
     uri: "http://localhost:3001/graphql",
@@ -18,8 +21,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
 
   useEffect(() => {
     const handleNamiWallet = async () => {
-      const isEnabled = await window.cardano.nami.isEnabled();
-      if (isEnabled) await namiWalletSignIn(setWallet);
+      await namiWalletSignIn(setWallet);
     };
 
     handleNamiWallet();

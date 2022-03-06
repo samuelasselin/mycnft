@@ -2,10 +2,16 @@ import { Hero } from "../components/Hero";
 import { AppBody } from "../layout/AppBody";
 import { useMeQuery } from "../generated/graphql";
 import { useWallet } from "../hooks/UseWallet";
+
 const Index = () => {
   const { wallet } = useWallet();
 
   if (!wallet.address) return <Hero title={"Loading.."} />;
+
+  if (!wallet.isInstalled)
+    return (
+      <Hero title={"Please install nami wallet extensions to continue !"} />
+    );
 
   if (wallet.address) {
     const { data, loading, error } = useMeQuery({
