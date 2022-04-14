@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export const SetStateWithPrev = (
-  setState: Dispatch<SetStateAction<any>>,
+  setState: Dispatch<SetStateAction<object>>,
   newState: object
 ) => {
   Object.entries(newState).forEach(([key, val]) => {
