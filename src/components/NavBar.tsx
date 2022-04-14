@@ -28,11 +28,58 @@ export const NavBar: React.FC = () => {
     await namiWalletSignIn(setWallet);
   };
 
-  const { syncWallet, address } = wallet;
+  const { isInstalled, syncWallet, address } = wallet;
 
   if (syncWallet && !address) {
     return <h1>Loading..</h1>;
   }
+
+  const handleButton = () => {
+    if (!isInstalled) {
+      return;
+    } else if (isInstalled && !syncWallet) {
+      return (
+        <Button colorScheme={"teal"} onClick={() => handleConnectWallet()}>
+          Connect with nami
+        </Button>
+      );
+    } else {
+      return (
+        <Menu>
+          <MenuButton
+            as={Button}
+            rounded={"full"}
+            variant={"link"}
+            cursor={"pointer"}
+            minW={0}
+          >
+            <Avatar
+              size={"sm"}
+              src={"https://avatars.dicebear.com/api/male/username.svg"}
+            />
+          </MenuButton>
+          <MenuList alignItems={"center"}>
+            <br />
+            <Center>
+              <Avatar
+                size={"2xl"}
+                src={"https://avatars.dicebear.com/api/male/username.svg"}
+              />
+            </Center>
+            <br />
+            <Center>
+              <Text>{truncateMiddle(address, 4, 8, "...")}</Text>
+            </Center>
+            <br />
+            <MenuDivider />
+            <MenuItem>Your Servers</MenuItem>
+            <MenuItem>Account Settings</MenuItem>
+            <MenuItem>Logout</MenuItem>
+          </MenuList>
+        </Menu>
+      );
+    }
+  };
 
   return (
     <>
@@ -41,50 +88,7 @@ export const NavBar: React.FC = () => {
           <Box>MYNCFT</Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              {!syncWallet ? (
-                <Button
-                  colorScheme={"teal"}
-                  onClick={() => handleConnectWallet()}
-                >
-                  Connect with nami
-                </Button>
-              ) : (
-                <Menu>
-                  <MenuButton
-                    as={Button}
-                    rounded={"full"}
-                    variant={"link"}
-                    cursor={"pointer"}
-                    minW={0}
-                  >
-                    <Avatar
-                      size={"sm"}
-                      src={"https://avatars.dicebear.com/api/male/username.svg"}
-                    />
-                  </MenuButton>
-                  <MenuList alignItems={"center"}>
-                    <br />
-                    <Center>
-                      <Avatar
-                        size={"2xl"}
-                        src={
-                          "https://avatars.dicebear.com/api/male/username.svg"
-                        }
-                      />
-                    </Center>
-                    <br />
-                    <Center>
-                      <Text>{truncateMiddle(address, 4, 8, "...")}</Text>
-                    </Center>
-                    <br />
-                    <MenuDivider />
-                    <MenuItem>Your Servers</MenuItem>
-                    <MenuItem>Account Settings</MenuItem>
-                    <MenuItem>Logout</MenuItem>
-                  </MenuList>
-                </Menu>
-              )}
-
+              {handleButton()}
               <Button onClick={toggleColorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
