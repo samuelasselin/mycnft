@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || (({ children }) => <>{children}</>);
 
   const [wallet, setWallet] = useState({
-    isWallet: false,
+    syncWallet: false,
     isInstalled: false,
   });
 

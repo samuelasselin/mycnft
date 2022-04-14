@@ -1,5 +1,5 @@
 import { Address } from "@emurgo/cardano-serialization-lib-browser";
 
-export const useCardano = async () => {
+export const CardanoAddress = async () => {
   return Address;
 };

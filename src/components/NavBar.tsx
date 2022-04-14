@@ -28,6 +28,12 @@ export const NavBar: React.FC = () => {
     await namiWalletSignIn(setWallet);
   };
 
+  const { syncWallet, address } = wallet;
+
+  if (syncWallet && !address) {
+    return <h1>Loading..</h1>;
+  }
+
   return (
     <>
       <Box bg={useColorModeValue("gray.200", "gray.900")} px={4}>
@@ -35,7 +41,7 @@ export const NavBar: React.FC = () => {
           <Box>MYNCFT</Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              {!wallet.isWallet ? (
+              {!syncWallet ? (
                 <Button
                   colorScheme={"teal"}
                   onClick={() => handleConnectWallet()}
@@ -68,7 +74,7 @@ export const NavBar: React.FC = () => {
                     </Center>
                     <br />
                     <Center>
-                      <Text>{truncateMiddle(wallet.address, 4, 8, "...")}</Text>
+                      <Text>{truncateMiddle(address, 4, 8, "...")}</Text>
                     </Center>
                     <br />
                     <MenuDivider />
