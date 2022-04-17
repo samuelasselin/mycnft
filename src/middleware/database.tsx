@@ -12,13 +12,15 @@ const getMongoClient = async () => {
 const database = async (req, res, next) => {
   handleMongoClient();
   req.dbClient = await getMongoClient();
-  req.db = req.dbClient.db("mycnft");
+  req.db = req.dbClient.db("mycnftdev");
   return next();
 };
 
 const handleMongoClient = () => {
   if (!global.mongo.client) {
-    global.mongo.client = new MongoClient(process.env.MONGODB_URI);
+    global.mongo.client = new MongoClient(
+      "mongodb+srv://master:E10ce7de22%401@mycnftdev.pwsqe.mongodb.net/mycnftdev?retryWrites=true&w=majority"
+    );
   }
 };
 

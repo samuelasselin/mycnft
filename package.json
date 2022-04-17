@@ -12,6 +12,8 @@
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.1.5",
     "@emurgo/cardano-serialization-lib-browser": "^10.0.4",
+    "axios": "^0.26.1",
+    "axios-hooks": "^3.0.1",
     "framer-motion": "^4.0.3",
     "mongodb": "^4.5.0",
     "next": "latest",
