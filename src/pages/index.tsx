@@ -1,7 +1,7 @@
 import { Hero } from "../components/Hero";
 import { AppBody } from "../layout/AppBody";
 import { useWallet } from "../hooks/UseWallet";
-import { CreateUsername } from "../components/CreateUsername";
+import { Username } from "../components/forms/Username";
 
 const Index = () => {
   const { wallet } = useWallet();
@@ -13,7 +13,7 @@ const Index = () => {
     return <Hero title={"Please connect to your nami wallet."} />;
 
   if (wallet.address) {
-    return <CreateUsername />;
+    return <Username />;
   }
 
   return <Hero title={"Welcome to mycnft.io"} />;
