@@ -18,9 +18,7 @@ const database = async (req, res, next) => {
 
 const handleMongoClient = () => {
   if (!global.mongo.client) {
-    global.mongo.client = new MongoClient(
-      "mongodb+srv://master:E10ce7de22%401@mycnftdev.pwsqe.mongodb.net/mycnftdev?retryWrites=true&w=majority"
-    );
+    global.mongo.client = new MongoClient(process.env.MONGODB_URI);
   }
 };
 
