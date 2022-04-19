@@ -1,22 +1,23 @@
 import { Hero } from "../components/Hero";
 import { AppBody } from "../layout/AppBody";
 import { useWallet } from "../hooks/UseWallet";
-import { Username } from "../components/forms/Username";
+import { Loader } from "../components/Loader";
+import React from "react";
+import Home from "../components/Home";
 
-const Index = () => {
+const Index: React.FC & { layout: any } = () => {
   const { wallet } = useWallet();
+  const { isInstalled, address, walletLoading } = wallet;
 
-  if (!wallet.isInstalled)
-    return <Hero title={"Install nami wallet to continue."} />;
+  if (walletLoading) return <Loader title={"Loading your profile.."} />;
+  if (!isInstalled) return <Hero title={"Install nami wallet to continue."} />;
+  if (!address) return <Hero title={"Please connect to your nami wallet."} />;
 
-  if (!wallet.address)
-    return <Hero title={"Please connect to your nami wallet."} />;
-
-  if (wallet.address) {
-    return <Username />;
+  if (address) {
+    return <Home address={address} />;
   }
 
-  return <Hero title={"Welcome to mycnft.io"} />;
+  return;
 };
 
 export default Index;

@@ -1,9 +1,4 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-} from "@chakra-ui/react";
+import { FormControl, Input, FormErrorMessage } from "@chakra-ui/react";
 import { useField } from "formik";
 import React from "react";
 
@@ -16,7 +11,6 @@ interface InputFieldProps {
 
 export const InputField: React.FC<InputFieldProps> = (props) => {
   const [field, { error }] = useField(props);
-
   const { placeholder, type } = props;
 
   return (

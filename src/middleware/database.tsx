@@ -1,28 +1,35 @@
-import { MongoClient } from "mongodb";
-import nextConnect from "next-connect";
+import mongoose from "mongoose";
 
-global.mongo = global.mongo || {};
+const MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI;
 
-const getMongoClient = async () => {
-  handleMongoClient();
-  await global.mongo.client.connect();
-  return global.mongo.client;
-};
+if (!MONGODB_URI) {
+  throw new Error(
+    "Please define the MONGODB_URI environment variable inside .env.development"
+  );
+}
 
-const database = async (req, res, next) => {
-  handleMongoClient();
-  req.dbClient = await getMongoClient();
-  req.db = req.dbClient.db("mycnftdev");
-  return next();
-};
+let cached = global.mongoose;
 
-const handleMongoClient = () => {
-  if (!global.mongo.client) {
-    global.mongo.client = new MongoClient(process.env.MONGODB_URI);
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+const dbConnect = async () => {
+  if (cached.conn) {
+    return cached.conn;
   }
+
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+    };
+
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose;
+    });
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
 
-const middleware = nextConnect();
-middleware.use(database);
-
-export default middleware;
+export default dbConnect;

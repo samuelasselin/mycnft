@@ -5,10 +5,11 @@ import { WalletContext } from "../hooks/UseWallet";
 import { useEffect, useState } from "react";
 import { namiWalletSignIn } from "../utils/NamiWallet";
 
-function MyApp({ Component, pageProps }: AppLayoutProps) {
+const MyApp = ({ Component, pageProps }: AppLayoutProps) => {
   const Layout = Component.layout || (({ children }) => <>{children}</>);
 
   const [wallet, setWallet] = useState({
+    isLoading: false,
     syncWallet: false,
     isInstalled: false,
   });
@@ -32,6 +33,6 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
       </ChakraProvider>
     </WalletContext.Provider>
   );
-}
+};
 
 export default MyApp;

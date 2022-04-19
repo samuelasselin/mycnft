@@ -4,6 +4,7 @@ export interface walletProps {
   isInstalled: boolean;
   syncWallet: boolean;
   address?: string;
+  walletLoading?: boolean;
 }
 
 interface useWalletProps {
@@ -12,7 +13,7 @@ interface useWalletProps {
 }
 
 export const WalletContext = createContext<useWalletProps>({
-  wallet: { syncWallet: false, isInstalled: false },
+  wallet: { syncWallet: false, isInstalled: false, walletLoading: false },
 });
 
 export const useWallet = () => {

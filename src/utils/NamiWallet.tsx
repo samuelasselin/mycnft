@@ -9,7 +9,10 @@ export const namiWalletSignIn = async (
   const deserialization = await CardanoAddress();
 
   if (window.cardano?.nami) {
-    await SetStateWithPrev(setWallet, { isInstalled: true });
+    await SetStateWithPrev(setWallet, {
+      isInstalled: true,
+      walletLoading: true,
+    });
 
     const api = await window.cardano.nami.enable();
 
@@ -20,7 +23,11 @@ export const namiWalletSignIn = async (
         .from_bytes(Buffer.from(hex[0], "hex"))
         .to_bech32();
 
-      await SetStateWithPrev(setWallet, { syncWallet: true, address });
+      await SetStateWithPrev(setWallet, {
+        syncWallet: true,
+        address,
+        walletLoading: false,
+      });
     } else {
       setWallet({ syncWallet: false, isInstalled: false });
     }

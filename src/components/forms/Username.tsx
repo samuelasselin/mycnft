@@ -8,10 +8,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Form, Formik } from "formik";
+import { InputField } from "../InputField";
 import axios from "axios";
-import { InputField } from "../../utils/InputField";
 
-export const Username: React.FC = () => {
+interface UsernameProps {
+  address: string;
+}
+
+export const Username: React.FC<UsernameProps> = ({ address }) => {
   return (
     <Stack
       spacing={4}
@@ -39,11 +43,17 @@ export const Username: React.FC = () => {
       <Formik
         initialValues={{ username: "" }}
         onSubmit={async ({ username }, { setSubmitting, setErrors }) => {
-          if (!username) setErrors({ username: "Required" });
-          await axios.post("http://localhost:3000/api/user", {
-            username,
-          });
-          await new Promise((r) => setTimeout(r, 2000));
+          if (!username) setErrors({ username: "Username is required" });
+          else {
+            const response = await axios.post(
+              `${process.env.NEXT_PUBLIC_DOMAIN}/api/user`,
+              {
+                username,
+                address: address,
+              }
+            );
+            console.log(response);
+          }
         }}
       >
         {({ isSubmitting }) => (
