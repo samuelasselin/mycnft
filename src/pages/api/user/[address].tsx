@@ -1,7 +1,9 @@
-import dbConnect from "../../../middleware/database";
-import User from "../models/user";
+import type { NextApiRequest, NextApiResponse } from "next";
+import dbConnect from "../../../middleware/DbConnect";
+import User from "../../../models/user";
+import { resHandler } from "../../../middleware/ResHandler";
 
-const handler = async (req, res) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { address },
     method,
@@ -11,45 +13,48 @@ const handler = async (req, res) => {
 
   switch (method) {
     case "GET":
-      try {
-        const user = await User.findOne({ address: address });
-        res.status(200).json({ success: true, user: user || null });
-      } catch (error) {
-        res.status(400).json({ success: false });
+      const user = await User.findOne({ address: address });
+
+      if (user) resHandler(res, 200, { user });
+      else {
+        resHandler(res, 400, {});
       }
+
       break;
 
     case "PUT":
       try {
-        const user = await User.findOneAndUpdate(address, req.body, {
+        const user = await User.findOneAndUpdate(address as any, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!user) {
-          return res.status(400).json({ success: false });
-        }
-        res.status(200).json({ success: true, user: user });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
 
-    case "DELETE":
-      try {
-        const deletedUser = await User.deleteOne({ address });
-        if (!deletedUser) {
-          return res.status(400).json({ success: false });
+        if (user) resHandler(res, 200, { user });
+        else {
+          resHandler(res, 400, {});
         }
-        res.status(200).json({ success: true, user: {} });
       } catch (error) {
-        res.status(400).json({ success: false });
+        resHandler(res, 400, {});
       }
       break;
 
     default:
-      res.status(400).json({ success: false });
+      resHandler(res, 400, {});
       break;
   }
 };
 
 export default handler;
+
+// case "DELETE":
+// try {
+//   const deletedUser = await User.deleteOne({ address });
+//
+//   if (deletedUser) resHandler(res, 200, {});
+//   else {
+//     resHandler(res, 400, {});
+//   }
+// } catch (error) {
+//   res.status(400).json({ success: false });
+// }
+// break;

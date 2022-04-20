@@ -1,5 +1,5 @@
-import { Username } from "../components/forms/Username";
-import { Loader } from "../components/Loader";
+import { Username } from "./forms/Username";
+import { Loader } from "./Loader";
 import React from "react";
 import useAxios from "axios-hooks";
 import { AlertMessage } from "./AlertMessage";
@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ address }) => {
   if (loading) return <Loader title={"Loading your profile.."} />;
   if (error) return <AlertMessage />;
 
-  if (!data.user) {
+  if (data.user) {
     return <Username address={address} />;
   }
 

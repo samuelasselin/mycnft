@@ -45,14 +45,21 @@ export const Username: React.FC<UsernameProps> = ({ address }) => {
         onSubmit={async ({ username }, { setSubmitting, setErrors }) => {
           if (!username) setErrors({ username: "Username is required" });
           else {
-            const response = await axios.post(
-              `${process.env.NEXT_PUBLIC_DOMAIN}/api/user`,
-              {
+            await axios
+              .post(`${process.env.NEXT_PUBLIC_DOMAIN}/api/user`, {
                 username,
                 address: address,
-              }
-            );
-            console.log(response);
+              })
+              .catch(function (error) {
+                if (error.toJSON().status == 422)
+                  setErrors({ username: "Username is already taken." });
+                else {
+                  setErrors({
+                    username: "An error occured, please try again.",
+                  });
+                }
+              });
+            setSubmitting(false);
           }
         }}
       >

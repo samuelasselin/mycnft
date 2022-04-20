@@ -1,7 +1,13 @@
 import mongoose from "mongoose";
 let Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+interface IUser {
+  address: string;
+  username: string;
+  createdAt: Date;
+}
+
+const UserSchema = new Schema<IUser>({
   address: {
     type: String,
     required: true,
@@ -17,4 +23,5 @@ const UserSchema = new Schema({
   },
 });
 
-export default mongoose.models.User || mongoose.model("User", UserSchema);
+export default mongoose.models.User ||
+  mongoose.model<IUser>("User", UserSchema);
