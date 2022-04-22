@@ -17,25 +17,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       if (user) resHandler(res, 200, { user });
       else {
-        resHandler(res, 400, {});
+        resHandler(res, 200, {});
       }
 
-      break;
-
-    case "PUT":
-      try {
-        const user = await User.findOneAndUpdate(address as any, req.body, {
-          new: true,
-          runValidators: true,
-        });
-
-        if (user) resHandler(res, 200, { user });
-        else {
-          resHandler(res, 400, {});
-        }
-      } catch (error) {
-        resHandler(res, 400, {});
-      }
       break;
 
     default:
@@ -45,16 +29,3 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 };
 
 export default handler;
-
-// case "DELETE":
-// try {
-//   const deletedUser = await User.deleteOne({ address });
-//
-//   if (deletedUser) resHandler(res, 200, {});
-//   else {
-//     resHandler(res, 400, {});
-//   }
-// } catch (error) {
-//   res.status(400).json({ success: false });
-// }
-// break;

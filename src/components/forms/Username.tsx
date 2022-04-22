@@ -10,12 +10,13 @@ import React from "react";
 import { Form, Formik } from "formik";
 import { InputField } from "../InputField";
 import axios from "axios";
+import { useWallet } from "../../hooks/UseWallet";
 
-interface UsernameProps {
-  address: string;
-}
+export const Username: React.FC = () => {
+  const {
+    wallet: { address },
+  } = useWallet();
 
-export const Username: React.FC<UsernameProps> = ({ address }) => {
   return (
     <Stack
       spacing={4}
@@ -75,7 +76,7 @@ export const Username: React.FC<UsernameProps> = ({ address }) => {
                 type="submit"
                 isLoading={isSubmitting}
               >
-                Save
+                Create username
               </Button>
             </Stack>
           </Form>

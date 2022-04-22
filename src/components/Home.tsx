@@ -3,6 +3,7 @@ import { Loader } from "./Loader";
 import React from "react";
 import useAxios from "axios-hooks";
 import { AlertMessage } from "./AlertMessage";
+import Collectibles from "./Collectibles";
 
 interface HomeProps {
   address: string;
@@ -17,11 +18,11 @@ const Home: React.FC<HomeProps> = ({ address }) => {
   if (loading) return <Loader title={"Loading your profile.."} />;
   if (error) return <AlertMessage />;
 
-  if (data.user) {
-    return <Username address={address} />;
+  if (!data.user) {
+    return <Username />;
   }
 
-  return <h1>show user nft and actions</h1>;
+  return <Collectibles />;
 };
 
 export default Home;
