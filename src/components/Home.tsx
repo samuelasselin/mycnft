@@ -10,8 +10,10 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ address }) => {
+  const userData = JSON.stringify({ address });
+
   const [{ data, loading, error }] = useAxios({
-    url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/user/${address}`,
+    url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/user/${userData}`,
     method: "GET",
   });
 
@@ -22,7 +24,7 @@ const Home: React.FC<HomeProps> = ({ address }) => {
     return <Username />;
   }
 
-  return <Assets />;
+  return <Assets address={address} />;
 };
 
 export default Home;

@@ -1,8 +1,8 @@
-import { Text } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { Container } from "../components/Container";
+import { Title } from "../components/Title";
 
 export const AppBody: React.FC<{}> = ({
   children,
@@ -15,7 +15,7 @@ export const AppBody: React.FC<{}> = ({
       <Container height="100vh">
         {children}
         <Footer>
-          <Text>Made with ❤️ for Cardano</Text>
+          <Title title={"Made with ❤️ for Cardano"} />
         </Footer>
       </Container>
     </>

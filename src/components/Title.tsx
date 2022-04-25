@@ -7,10 +7,12 @@ interface TextProps {
 
 export const Title: React.FC<TextProps> = ({ title }) => (
   <Text
+    mt={10}
     bgGradient={"linear(to-l, #7928CA, #FF0080)"}
     bgClip="text"
-    fontSize="1xl"
+    fontSize="2xl"
     textAlign={"center"}
+    fontWeight="semibold"
   >
     {title}
   </Text>

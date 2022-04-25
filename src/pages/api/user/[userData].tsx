@@ -5,7 +5,7 @@ import { resHandler } from "../../../middleware/ResHandler";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
-    query: { address },
+    query: { userData },
     method,
   } = req;
 
@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case "GET":
-      const user = await User.findOne({ address: address });
+      const user = await User.findOne({ userData });
 
       if (user) resHandler(res, 200, { user });
       else {

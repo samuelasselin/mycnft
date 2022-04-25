@@ -11,6 +11,7 @@ import {
   CollectibleUnitsType,
   CollectibleType,
 } from "../types/CollectiblesTypes";
+import { SetStateWithPrev } from "../utils/SetStateWithPrev";
 
 interface CollectiblesProps {
   units: CollectibleUnitsType[];
@@ -40,14 +41,11 @@ export const Collectibles: React.FC<CollectiblesProps> = ({
       })
       .then(
         ({ data }) => {
-          setCollectiblesData((prevState) => {
-            return {
-              ...prevState,
-              collectiblesWithMetaData: [
-                ...collectiblesWithMetaData,
-                ...data.collectibles,
-              ],
-            };
+          SetStateWithPrev(setCollectiblesData, {
+            collectiblesWithMetaData: [
+              ...collectiblesWithMetaData,
+              ...data.collectibles,
+            ],
           });
         },
         (error) => {
@@ -61,10 +59,9 @@ export const Collectibles: React.FC<CollectiblesProps> = ({
       dataLength={collectiblesWithMetaData.length}
       next={fetchMoreData}
       hasMore={units.length != collectiblesWithMetaData.length}
-      loader={<Title title={"Scroll to load more nfts !"} />}
-      endMessage={<Title title={"No more nft to load"} />}
+      loader={<Title title={"Scroll to load more collectibles"} />}
     >
-      <SimpleGrid columns={3} spacing={10} mt={10}>
+      <SimpleGrid columns={3} spacing={5} mt={10}>
         {collectiblesWithMetaData.map((collectible, index) => {
           return <Collectible key={index} collectible={collectible} />;
         })}

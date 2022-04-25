@@ -25,7 +25,7 @@ export const Collectible: React.FC<CollectibleProps> = ({ collectible }) => {
       maxW="sm"
       borderWidth="1px"
       rounded="lg"
-      shadow="lg"
+      shadow="xlg"
       position="relative"
     >
       <Image
