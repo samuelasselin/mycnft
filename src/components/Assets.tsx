@@ -3,7 +3,7 @@ import useAxios from "axios-hooks";
 import { Loader } from "./Loader";
 import { AlertMessage } from "./AlertMessage";
 import { useWallet } from "../hooks/UseWallet";
-import { CollectiblesViewer } from "./CollectiblesViewer";
+import { Collectibles } from "./Collectibles";
 
 const Assets: React.FC = () => {
   const {
@@ -21,10 +21,7 @@ const Assets: React.FC = () => {
 
   if (units && collectiblesWithMetaData) {
     return (
-      <CollectiblesViewer
-        units={units}
-        collectibles={collectiblesWithMetaData}
-      />
+      <Collectibles units={units} collectibles={collectiblesWithMetaData} />
     );
   }
 

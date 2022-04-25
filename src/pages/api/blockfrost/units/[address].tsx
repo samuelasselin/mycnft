@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     })
   );
 
-  if (units && collectiblesWithMetaData)
+  if (units.length > 0 && collectiblesWithMetaData.length > 0)
     resHandler(res, 200, { units, collectiblesWithMetaData });
   else {
     resHandler(res, 200, { units: [], collectiblesWithMetaData: [] });

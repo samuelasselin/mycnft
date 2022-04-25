@@ -9,7 +9,7 @@ export const Title: React.FC<TextProps> = ({ title }) => (
   <Text
     bgGradient={"linear(to-l, #7928CA, #FF0080)"}
     bgClip="text"
-    fontSize="2xl"
+    fontSize="1xl"
     textAlign={"center"}
   >
     {title}
