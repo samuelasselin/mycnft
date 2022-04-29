@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ address }) => {
     method: "GET",
   });
 
-  if (loading) return <Loader title={"Loading your profile.."} />;
+  if (loading) return <Loader title={"Loading ..."} />;
   if (error) return <AlertMessage />;
 
   if (!data.user) {

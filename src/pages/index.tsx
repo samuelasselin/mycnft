@@ -9,7 +9,7 @@ const Index: React.FC & { layout: any } = () => {
   const { wallet } = useWallet();
   const { isInstalled, address, walletLoading } = wallet;
 
-  if (walletLoading) return <Loader title={"Loading your profile.."} />;
+  if (walletLoading) return <Loader title={"Loading ..."} />;
   if (!isInstalled) return <Hero title={"Install nami wallet to continue."} />;
   if (!address) return <Hero title={"Please connect to your nami wallet."} />;
 

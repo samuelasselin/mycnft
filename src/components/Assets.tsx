@@ -13,10 +13,18 @@ const Assets: React.FC<AssetsProps> = ({ address }) => {
     url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/blockfrost/units/${address}`,
   });
 
-  if (loading) return <Loader title={"Loading collectibles.."} />;
+  if (loading) return <Loader title={"Loading ..."} />;
   if (error) return <AlertMessage />;
 
-  const { units, collectiblesWithMetaData } = data;
+  const { collectiblesWithMetaData } = data;
+
+  const units = [
+    ...data.units,
+    ...data.units,
+    ...data.units,
+    ...data.units,
+    ...data.units,
+  ];
 
   if (units && collectiblesWithMetaData) {
     return (

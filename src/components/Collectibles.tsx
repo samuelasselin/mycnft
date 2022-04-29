@@ -61,7 +61,7 @@ export const Collectibles: React.FC<CollectiblesProps> = ({
       hasMore={units.length != collectiblesWithMetaData.length}
       loader={<Title title={"Scroll to load more collectibles"} />}
     >
-      <SimpleGrid columns={3} spacing={5} mt={10}>
+      <SimpleGrid columns={4} spacing={5} margin={20}>
         {collectiblesWithMetaData.map((collectible, index) => {
           return <Collectible key={index} collectible={collectible} />;
         })}

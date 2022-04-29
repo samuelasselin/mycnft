@@ -17,7 +17,7 @@ export const CollectiblesByUsername: React.FC & { layout: any } = () => {
     method: "GET",
   });
 
-  if (loading) return <Loader title={`Loading collectibles..`} />;
+  if (loading) return <Loader title={`Loading ...`} />;
   if (error) return <AlertMessage />;
 
   if (data.user) {
