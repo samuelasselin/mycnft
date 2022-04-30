@@ -7,11 +7,12 @@ import Home from "../components/Home";
 
 const Index: React.FC & { layout: any } = () => {
   const { wallet } = useWallet();
-  const { isInstalled, address, walletLoading } = wallet;
+  const { isInstalled, address, walletLoading, syncWallet } = wallet;
 
   if (walletLoading) return <Loader title={"Loading ..."} />;
   if (!isInstalled) return <Hero title={"Install nami wallet to continue."} />;
-  if (!address) return <Hero title={"Please connect to your nami wallet."} />;
+  if (!syncWallet)
+    return <Hero title={"Please connect to your nami wallet."} />;
 
   if (address) {
     return <Home address={address} />;

@@ -26,12 +26,12 @@ export const Collectible: React.FC<CollectibleProps> = ({ collectible }) => {
 
   return (
     <Box
-      bg={useColorModeValue("white", "gray.800")}
-      maxW="sm"
-      borderWidth="1px"
-      rounded="lg"
-      shadow="lg"
-      position="relative"
+      bg={useColorModeValue("gray.200", "gray.800")}
+      w="full"
+      h="full"
+      alignItems="center"
+      justifyContent="center"
+      cursor="pointer"
     >
       <LazyLoad>
         <Image
@@ -56,30 +56,14 @@ export const Collectible: React.FC<CollectibleProps> = ({ collectible }) => {
         <Flex mt="1" justifyContent="space-between" alignContent="center">
           <Box
             fontSize="1xl"
-            fontWeight="semibold"
+            fontWeight="bold"
             as="h4"
             lineHeight="tight"
             isTruncated
           >
             {name}
           </Box>
-          <Tooltip
-            label="Twitter"
-            bg="white"
-            placement={"top"}
-            color={"gray.800"}
-            fontSize={"1.2em"}
-          >
-            <chakra.a href={""} display={"flex"}>
-              <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"} />
-            </chakra.a>
-          </Tooltip>
         </Flex>
-        <Box d="flex" alignItems="baseline">
-          <Badge rounded="full" px="2" fontSize="0.8em" colorScheme="red">
-            Official website
-          </Badge>
-        </Box>
       </Box>
     </Box>
   );

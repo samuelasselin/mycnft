@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { SimpleGrid } from "@chakra-ui/react";
+import { Heading, SimpleGrid } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { FetchIncrementBy } from "../utils/infiniteScrollFetchBy";
@@ -61,7 +61,7 @@ export const Collectibles: React.FC<CollectiblesProps> = ({
       hasMore={units.length != collectiblesWithMetaData.length}
       loader={<Title title={"Scroll to load more collectibles"} />}
     >
-      <SimpleGrid columns={4} spacing={5} margin={20}>
+      <SimpleGrid columns={4} spacing={5} margin={20} minChildWidth="250px">
         {collectiblesWithMetaData.map((collectible, index) => {
           return <Collectible key={index} collectible={collectible} />;
         })}
