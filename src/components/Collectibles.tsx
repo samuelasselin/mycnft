@@ -55,17 +55,19 @@ export const Collectibles: React.FC<CollectiblesProps> = ({
   };
 
   return (
-    <InfiniteScroll
-      dataLength={collectiblesWithMetaData.length}
-      next={fetchMoreData}
-      hasMore={units.length != collectiblesWithMetaData.length}
-      loader={<Title title={"Scroll to load more collectibles"} />}
-    >
-      <SimpleGrid columns={4} spacing={5} margin={20} minChildWidth="250px">
-        {collectiblesWithMetaData.map((collectible, index) => {
-          return <Collectible key={index} collectible={collectible} />;
-        })}
-      </SimpleGrid>
-    </InfiniteScroll>
+    <>
+      <InfiniteScroll
+        dataLength={collectiblesWithMetaData.length}
+        next={fetchMoreData}
+        hasMore={units.length != collectiblesWithMetaData.length}
+        loader={<Title title={"Scroll to load more collectibles"} />}
+      >
+        <SimpleGrid columns={4} spacing={5} margin={20} minChildWidth="250px">
+          {collectiblesWithMetaData.map((collectible, index) => {
+            return <Collectible key={index} collectible={collectible} />;
+          })}
+        </SimpleGrid>
+      </InfiniteScroll>
+    </>
   );
 };

@@ -12,7 +12,7 @@ export const AppBody: React.FC<{}> = ({
   return (
     <>
       <NavBar />
-      <Container>
+      <Container minHeight="100vh">
         {children}
         <Footer>
           <Title title={"Made with ❤️ for Cardano"} />
