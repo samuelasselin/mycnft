@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Heading, SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { FetchIncrementBy } from "../utils/infiniteScrollFetchBy";

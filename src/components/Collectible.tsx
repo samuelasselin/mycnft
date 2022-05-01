@@ -11,8 +11,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { CollectibleType } from "../types/CollectiblesTypes";
-import { Icon } from "@chakra-ui/icons";
-import { FiShoppingCart } from "react-icons/fi";
 import { getAssetImageSource } from "../utils/ipfsConverter";
 import LazyLoad from "react-lazyload";
 
@@ -25,19 +23,13 @@ export const Collectible: React.FC<CollectibleProps> = ({ collectible }) => {
   const { image, name } = onChainMetaData;
 
   return (
-    <Box
-      bg={useColorModeValue("gray.200", "gray.800")}
-      w="full"
-      h="full"
-      alignItems="center"
-      justifyContent="center"
-      cursor="pointer"
-    >
+    <Box bg={useColorModeValue("gray.200", "gray.800")}>
       <LazyLoad>
         <Image
           src={getAssetImageSource(image)}
           alt={name}
           roundedTop="lg"
+          shadow="lg"
           fallback={
             <Stack alignItems={"center"} mt={100}>
               <Spinner

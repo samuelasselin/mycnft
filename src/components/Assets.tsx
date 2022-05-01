@@ -18,7 +18,7 @@ const Assets: React.FC<AssetsProps> = ({ address }) => {
 
   const { collectiblesWithMetaData } = data;
 
-  const units = [...data.units, ...data.units];
+  const units = data.units;
 
   if (units && collectiblesWithMetaData) {
     return (

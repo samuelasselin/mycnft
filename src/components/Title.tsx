@@ -7,7 +7,7 @@ interface TextProps {
 
 export const Title: React.FC<TextProps> = ({ title }) => (
   <Text
-    mt={10}
+    mt={5}
     bgGradient={"linear(to-l, #7928CA, #FF0080)"}
     bgClip="text"
     fontSize="2xl"

@@ -1,1 +1,1 @@
-export const FetchIncrementBy = 4;
+export const FetchIncrementBy = 10;

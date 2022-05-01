@@ -10,8 +10,7 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React from "react";
 import { useWallet } from "../hooks/UseWallet";
 import { namiWalletSignIn } from "../utils/NamiWallet";
-import truncateMiddle from "truncate-middle";
-
+import { CopyIcon } from "@chakra-ui/icons";
 export const NavBar: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { wallet, setWallet } = useWallet();
@@ -31,12 +30,29 @@ export const NavBar: React.FC = () => {
       return;
     } else if (isInstalled && !syncWallet) {
       return (
-        <Button colorScheme={"teal"} onClick={() => handleConnectWallet()}>
+        <Button
+          fontSize="1xl"
+          fontWeight="bold"
+          colorScheme={"teal"}
+          onClick={() => handleConnectWallet()}
+        >
           Connect to nami
         </Button>
       );
     } else {
-      return <Button colorScheme={"teal"}>Share my profil</Button>;
+      return (
+        <Button
+          fontSize="1xl"
+          fontWeight="bold"
+          colorScheme={"teal"}
+          onClick={() =>
+            navigator.clipboard.writeText("Copy this text to clipboard")
+          }
+        >
+          Share profile
+          <CopyIcon ml={2} />
+        </Button>
+      );
     }
   };
 
