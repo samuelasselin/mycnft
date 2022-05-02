@@ -31,10 +31,9 @@ export const namiWalletSignIn = async (
       }
     }
   } catch (error) {
-    setWallet({
-      syncWallet: false,
-      isInstalled: true,
+    await SetStateWithPrev(setWallet, {
       walletLoading: false,
+      syncWallet: false,
     });
   }
 };

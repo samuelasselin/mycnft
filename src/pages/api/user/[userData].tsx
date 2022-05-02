@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   switch (method) {
     case "GET":
-      const user = await User.findOne({ userData });
+      const user = await User.findOne(JSON.parse(userData as string));
 
       if (user) resHandler(res, 200, { user });
       else {

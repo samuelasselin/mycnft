@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-
-import { SimpleGrid } from "@chakra-ui/react";
+import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { FetchIncrementBy } from "../utils/infiniteScrollFetchBy";
 import { AlertMessage } from "./AlertMessage";
-import { Title } from "./Title";
 import { Collectible } from "./Collectible";
 import {
   CollectibleUnitsType,
@@ -60,9 +58,15 @@ export const Collectibles: React.FC<CollectiblesProps> = ({
         dataLength={collectiblesWithMetaData.length}
         next={fetchMoreData}
         hasMore={units.length != collectiblesWithMetaData.length}
-        loader={<Title title={"Scroll to load more collectibles"} />}
+        loader={<Text>Scroll to load more collectibles</Text>}
       >
-        <SimpleGrid columns={4} spacing={5} margin={20} minChildWidth="250px">
+        <Box p={4} margin={10}>
+          <Text fontSize="2xl" fontWeight="bold">
+            Welcome to tamron gallery
+          </Text>
+          <hr />
+        </Box>
+        <SimpleGrid columns={4} spacing={5} margin={10} minChildWidth="250px">
           {collectiblesWithMetaData.map((collectible, index) => {
             return <Collectible key={index} collectible={collectible} />;
           })}

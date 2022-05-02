@@ -5,6 +5,7 @@ import useAxios from "axios-hooks";
 import { Loader } from "../components/Loader";
 import { AlertMessage } from "../components/AlertMessage";
 import Assets from "../components/Assets";
+import { Hero } from "../components/Hero";
 
 export const CollectiblesByUsername: React.FC & { layout: any } = () => {
   const router = useRouter();
@@ -20,11 +21,13 @@ export const CollectiblesByUsername: React.FC & { layout: any } = () => {
   if (loading) return <Loader title={`Loading ...`} />;
   if (error) return <AlertMessage />;
 
-  if (data.user) {
-    return <Assets address={data.user.address} />;
+  const { user } = data;
+
+  if (user) {
+    return <Assets address={user.address} />;
   }
 
-  return <h1>{username}</h1>;
+  return <Hero title={"Request profile not found !"} />;
 };
 
 export default CollectiblesByUsername;

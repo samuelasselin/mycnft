@@ -17,6 +17,7 @@ export const Username: React.FC = () => {
     wallet: { address },
   } = useWallet();
 
+  // TODO redirect
   return (
     <Stack
       spacing={4}
@@ -27,12 +28,7 @@ export const Username: React.FC = () => {
       p={6}
       my={20}
     >
-      <Heading
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
-        bgClip="text"
-        lineHeight={1.1}
-        fontSize={{ base: "2xl", md: "3xl" }}
-      >
+      <Heading lineHeight={1.1} fontSize={{ base: "2xl", md: "3xl" }}>
         Please chose a username
       </Heading>
       <Text

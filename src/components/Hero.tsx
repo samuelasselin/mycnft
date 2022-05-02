@@ -6,13 +6,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ title }) => (
-  <Flex
-    justifyContent="center"
-    alignItems="center"
-    height="100vh"
-    bgGradient="linear(to-l, #7928CA, #FF0080)"
-    bgClip="text"
-  >
+  <Flex justifyContent="center" alignItems="center" height="70vh">
     <Heading fontSize="5vw">{title}</Heading>
   </Flex>
 );

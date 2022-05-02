@@ -42,6 +42,7 @@ export const NavBar: React.FC = () => {
     } else {
       return (
         <Button
+          leftIcon={<CopyIcon />}
           fontSize="1xl"
           fontWeight="bold"
           colorScheme={"teal"}
@@ -50,7 +51,6 @@ export const NavBar: React.FC = () => {
           }
         >
           Share profile
-          <CopyIcon ml={2} />
         </Button>
       );
     }
