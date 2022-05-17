@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { BlockFrost } from "../../../../middleware/BlockFrost";
 import { resHandler } from "../../../../middleware/ResHandler";
-import { FetchIncrementBy } from "../../../../utils/infiniteScrollFetchBy";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
@@ -9,18 +8,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   } = req;
 
   const assetsUnit = await BlockFrost.addresses(address as any);
+
   const units = assetsUnit?.amount.filter((a) => a.quantity == "1");
 
   const collectiblesWithMetaData = await Promise.all(
-    units.slice(0, FetchIncrementBy).map(async (e) => {
+    units.map(async (e) => {
       return await BlockFrost.assetsById(e.unit as any);
     })
   );
 
-  if (units.length > 0 && collectiblesWithMetaData.length > 0)
-    resHandler(res, 200, { units, collectiblesWithMetaData });
+  if (collectiblesWithMetaData.length > 0)
+    resHandler(res, 200, { collectiblesWithMetaData });
   else {
-    resHandler(res, 200, { units: [], collectiblesWithMetaData: [] });
+    resHandler(res, 200, { collectiblesWithMetaData: [] });
   }
 };
 

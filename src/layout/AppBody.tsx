@@ -15,8 +15,10 @@ export const AppBody: React.FC<{}> = ({
       <Container minHeight="100vh">
         {children}
         <Footer>
-          <Text mt={5} fontSize="2xl" textAlign={"center"} fontWeight="bold">
+          <Text mt={5} fontSize="1xl" textAlign={"center"} fontWeight="bold">
             Made with ❤️ for Cardano
+            <br />
+            Collections data obtained from opencnft.io
           </Text>
         </Footer>
       </Container>

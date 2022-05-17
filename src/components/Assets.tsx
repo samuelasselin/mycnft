@@ -2,7 +2,8 @@ import React from "react";
 import useAxios from "axios-hooks";
 import { Loader } from "./Loader";
 import { AlertMessage } from "./AlertMessage";
-import { Collectibles } from "./Collectibles";
+import _ from "lodash";
+import { Collections } from "./Collections";
 
 interface AssetsProps {
   address: string;
@@ -16,14 +17,13 @@ const Assets: React.FC<AssetsProps> = ({ address }) => {
   if (loading) return <Loader title={"Loading ..."} />;
   if (error) return <AlertMessage />;
 
-  const { collectiblesWithMetaData } = data;
+  const assetsByCollection = _.groupBy(
+    data.collectiblesWithMetaData,
+    "policy_id"
+  );
 
-  const units = data.units;
-
-  if (units && collectiblesWithMetaData) {
-    return (
-      <Collectibles units={units} collectibles={collectiblesWithMetaData} />
-    );
+  if (assetsByCollection) {
+    return <Collections assetsByCollection={assetsByCollection} />;
   }
 
   return <h1>No collectibles</h1>;
