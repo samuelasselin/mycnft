@@ -17,7 +17,7 @@ interface CollectibleProps {
   collectibles?: CollectibleType[];
   collectible: CollectibleType;
   forCollection: boolean;
-  collectionData: any;
+  collectionData?: any;
 }
 
 export const CollectibleCard: React.FC<CollectibleProps> = ({
@@ -46,7 +46,7 @@ export const CollectibleCard: React.FC<CollectibleProps> = ({
     <Box
       maxW={"350px"}
       minW={"350px"}
-      m={2}
+      m={3}
       role={"group"}
       p={6}
       bg={useColorModeValue("white", "gray.800")}

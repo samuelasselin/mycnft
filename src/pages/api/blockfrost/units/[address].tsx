@@ -11,10 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const units = assetsUnit?.amount.filter((a) => a.quantity == "1");
 
-  const test = [...units, ...units, ...units, ...units, ...units, ...units];
-
   const collectiblesWithMetaData = await Promise.all(
-    test.map(async (e) => {
+    units.map(async (e) => {
       return await BlockFrost.assetsById(e.unit as any);
     })
   );

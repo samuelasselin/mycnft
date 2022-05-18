@@ -27,7 +27,7 @@ const UserAssets: React.FC<AssetsProps> = ({ address }) => {
     return (
       <>
         <Box px={10} margin={10} w={"100%"}>
-          <Text fontSize="2xl" fontWeight="bold" as="h4" lineHeight="tight">
+          <Text fontWeight={800} fontSize={"xl"}>
             Collections
           </Text>
           <hr />

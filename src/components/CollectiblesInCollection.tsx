@@ -26,7 +26,7 @@ export const CollectiblesInCollection: React.FC<CollectionModalProps> = ({
 
   return (
     <>
-      <Button onClick={onOpen} colorScheme="teal">
+      <Button onClick={onOpen} size={"sm"} colorScheme="teal">
         View all ({collectibles.length})
       </Button>
 
