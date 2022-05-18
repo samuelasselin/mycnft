@@ -7,19 +7,19 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalFooter,
-  SimpleGrid,
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
 import { CollectibleType } from "../types/CollectiblesTypes";
-import { Collectible } from "./Collectible";
+import { CollectibleCard } from "./CollectibleCard";
+import { Container } from "../components/Container";
 
 interface CollectionModalProps {
   collectibles: CollectibleType[];
 }
 
-export const CollectionModal: React.FC<CollectionModalProps> = ({
+export const CollectiblesInCollection: React.FC<CollectionModalProps> = ({
   collectibles,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,19 +33,23 @@ export const CollectionModal: React.FC<CollectionModalProps> = ({
       <Modal isOpen={isOpen} size={"full"} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalCloseButton />
+          <ModalCloseButton zIndex={10} />
           <ModalBody bg={useColorModeValue("gray.50", "gray.900")}>
-            <SimpleGrid columns={4} spacing={5} margin={10}>
+            <Flex
+              justify={"center"}
+              direction={["column", "column", "row", "row"]}
+              wrap={"wrap"}
+            >
               {collectibles.map((collectible, index) => {
                 return (
-                  <Collectible
+                  <CollectibleCard
                     key={index}
                     forCollection={false}
                     collectible={collectible}
                   />
                 );
               })}
-            </SimpleGrid>
+            </Flex>
           </ModalBody>
           <ModalFooter>
             <Button colorScheme="teal" mr={3} onClick={onClose}>

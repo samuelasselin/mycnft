@@ -3,7 +3,7 @@ import { Loader } from "./Loader";
 import React from "react";
 import useAxios from "axios-hooks";
 import { AlertMessage } from "./AlertMessage";
-import Assets from "./Assets";
+import UserAssets from "./UserAssets";
 
 interface HomeProps {
   address: string;
@@ -24,7 +24,7 @@ const Home: React.FC<HomeProps> = ({ address }) => {
     return <Username />;
   }
 
-  return <Assets address={address} />;
+  return <UserAssets address={address} />;
 };
 
 export default Home;

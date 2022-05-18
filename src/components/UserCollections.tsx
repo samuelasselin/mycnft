@@ -1,8 +1,7 @@
 import React from "react";
 import useAxios from "axios-hooks";
-import { Loader } from "./Loader";
 import { AlertMessage } from "./AlertMessage";
-import { Collectible } from "./Collectible";
+import { CollectibleCard } from "./CollectibleCard";
 import { CollectibleType } from "../types/CollectiblesTypes";
 
 interface CollectibleByCollectionProps {
@@ -10,7 +9,7 @@ interface CollectibleByCollectionProps {
   collectibles: CollectibleType[];
 }
 
-export const Collection: React.FC<CollectibleByCollectionProps> = ({
+export const UserCollections: React.FC<CollectibleByCollectionProps> = ({
   policyId,
   collectibles,
 }) => {
@@ -19,17 +18,17 @@ export const Collection: React.FC<CollectibleByCollectionProps> = ({
     method: "GET",
   });
 
-  if (loading) return <Loader title={"Loading ..."} />;
+  if (loading) return <h1 />;
   if (error) return <AlertMessage />;
 
-  console.log(data);
-
-  return (
-    <Collectible
-      forCollection={true}
-      collectible={collectibles[0]}
-      collectionThumbnail={data.thumbnail}
-      collectibles={collectibles}
-    />
-  );
+  if (data) {
+    return (
+      <CollectibleCard
+        forCollection={true}
+        collectible={collectibles[0]}
+        collectionData={data}
+        collectibles={collectibles}
+      />
+    );
+  }
 };
