@@ -4,16 +4,20 @@ import { Hero } from "./Hero";
 
 interface AlertMessageProps {
   message?: string;
+  status?: "error" | "info" | "warning" | "success";
+  hero?: boolean;
 }
 
 export const AlertMessage: React.FC<AlertMessageProps> = ({
   message = "There was an error processing your request",
+  status = "error",
+  hero = true,
 }) => (
   <>
-    <Alert status="error">
+    <Alert status={status}>
       <AlertIcon />
       {message}
     </Alert>
-    <Hero title={"Please try again."} />
+    {hero ? <Hero title={"Please try again."} /> : null}
   </>
 );

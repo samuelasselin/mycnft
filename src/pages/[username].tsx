@@ -4,7 +4,7 @@ import AppBody from "../layout/AppBody";
 import useAxios from "axios-hooks";
 import { Loader } from "../components/Loader";
 import { AlertMessage } from "../components/AlertMessage";
-import Assets from "../components/Assets";
+import UserAssets from "../components/UserAssets";
 import { Hero } from "../components/Hero";
 
 export const CollectiblesByUsername: React.FC & { layout: any } = () => {
@@ -24,7 +24,7 @@ export const CollectiblesByUsername: React.FC & { layout: any } = () => {
   const { user } = data;
 
   if (user) {
-    return <Assets address={user.address} />;
+    return <UserAssets address={user.address} username={user.username} />;
   }
 
   return <Hero title={"Request profile not found !"} />;

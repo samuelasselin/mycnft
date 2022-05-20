@@ -3,7 +3,7 @@ import { Loader } from "./Loader";
 import React from "react";
 import useAxios from "axios-hooks";
 import { AlertMessage } from "./AlertMessage";
-import Assets from "./Assets";
+import UserAssets from "./UserAssets";
 
 interface HomeProps {
   address: string;
@@ -20,11 +20,13 @@ const Home: React.FC<HomeProps> = ({ address }) => {
   if (loading) return <Loader title={"Loading ..."} />;
   if (error) return <AlertMessage />;
 
-  if (!data.user) {
+  const { user } = data;
+
+  if (!user) {
     return <Username />;
   }
 
-  return <Assets address={address} />;
+  return <UserAssets address={address} username={user.username} />;
 };
 
 export default Home;

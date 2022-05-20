@@ -3,8 +3,9 @@ import { createContext, Dispatch, SetStateAction, useContext } from "react";
 export interface walletProps {
   isInstalled: boolean;
   syncWallet: boolean;
-  address?: string;
   walletLoading?: boolean;
+  address?: string;
+  username: null;
 }
 
 interface useWalletProps {
@@ -13,7 +14,12 @@ interface useWalletProps {
 }
 
 export const WalletContext = createContext<useWalletProps>({
-  wallet: { syncWallet: false, isInstalled: false, walletLoading: false },
+  wallet: {
+    syncWallet: false,
+    isInstalled: false,
+    walletLoading: false,
+    username: null,
+  },
 });
 
 export const useWallet = () => {

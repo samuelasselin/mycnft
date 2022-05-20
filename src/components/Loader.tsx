@@ -9,7 +9,7 @@ export const Loader: React.FC<LoaderProps> = ({ title }) => {
   return (
     <Flex flex="1" color={"#FF0080"}>
       <Stack alignItems={"center"} mt={265}>
-        <Heading fontSize="3vw">{title}</Heading>
+        {/*<Heading fontSize="3vw">{title}</Heading>*/}
         <Spinner
           thickness="4px"
           speed="0.65s"
