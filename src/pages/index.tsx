@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 const Index: React.FC<{}> = () => {
   const router = useRouter();
   const [{ data, loading, error }] = useAxios({
-    url: `https://api.opencnft.io/1/rank`,
+    url: `${process.env.NEXT_PUBLIC_OPENCNFT}/1/rank`,
     method: "GET",
   });
 

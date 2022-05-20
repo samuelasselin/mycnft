@@ -15,7 +15,7 @@ export const UserCollections: React.FC<CollectibleByCollectionProps> = ({
   collectibles,
 }) => {
   const [{ data, loading, error }] = useAxios({
-    url: `https://api.opencnft.io/1/policy/${policyId}`,
+    url: `${process.env.NEXT_PUBLIC_OPENCNFT}/1/policy/${policyId}`,
     method: "GET",
   });
 
