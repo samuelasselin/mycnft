@@ -9,12 +9,12 @@ import { namiWalletSignIn } from "../../utils/NamiWallet";
 const Index: React.FC & { layout: any } = () => {
   const { setWallet, wallet } = useWallet();
 
-  // useEffect(() => {
-  //   const handleNamiWallet = async () => {
-  //     await namiWalletSignIn(setWallet);
-  //   };
-  //   handleNamiWallet();
-  // }, []);
+  useEffect(() => {
+    const handleNamiWallet = async () => {
+      await namiWalletSignIn(setWallet);
+    };
+    handleNamiWallet();
+  }, []);
 
   const { isInstalled, address, walletLoading, syncWallet } = wallet;
 
