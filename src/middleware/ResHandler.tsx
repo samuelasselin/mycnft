@@ -5,5 +5,11 @@ export const resHandler = (
   statusCode: number,
   data: object
 ) => {
-  return res.status(statusCode).json(data);
+  return res
+    .setHeader(
+      "Access-Control-Allow-Origin",
+      "https://mycnft-samuelasselin.vercel.app"
+    )
+    .status(statusCode)
+    .json(data);
 };
