@@ -5,8 +5,5 @@ export const resHandler = (
   statusCode: number,
   data: object
 ) => {
-  return res
-    .setHeader("Access-Control-Allow-Origin", "*")
-    .status(statusCode)
-    .json(data);
+  return res.status(statusCode).json(data);
 };

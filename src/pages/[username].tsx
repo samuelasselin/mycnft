@@ -16,6 +16,7 @@ export const CollectiblesByUsername: React.FC & { layout: any } = () => {
   const [{ data, loading, error }] = useAxios({
     url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/user/${userData}`,
     method: "GET",
+    withCredentials: false,
   });
 
   if (loading) return <Loader title={`Loading ...`} />;
