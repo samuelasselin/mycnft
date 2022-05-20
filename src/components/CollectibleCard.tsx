@@ -10,38 +10,23 @@ import React from "react";
 import { CollectibleType } from "../types/CollectiblesTypes";
 import { getAssetImageSource } from "../utils/IpfsConverter";
 import LazyLoad from "react-lazyload";
-import { toString, fromHex } from "../utils/UtilsConverter";
 import { CollectiblesInCollection } from "./CollectiblesInCollection";
 
 interface CollectibleProps {
-  collectibles?: CollectibleType[];
-  collectible: CollectibleType;
-  forCollection: boolean;
   collectionData?: any;
+  collectibles?: CollectibleType[];
+  forCollection: boolean;
+  name: string;
+  image: string;
 }
 
 export const CollectibleCard: React.FC<CollectibleProps> = ({
   collectibles,
-  collectible,
   forCollection,
+  name,
+  image,
   collectionData,
 }) => {
-  const { onchain_metadata: onChainMetaData } = collectible;
-  let { image, name } = onChainMetaData;
-
-  let readableName = toString(fromHex(collectible.asset_name));
-
-  const nameToLetters = (name) => {
-    if (name) {
-      return name.split("#")[0];
-    }
-  };
-
-  if (forCollection) {
-    readableName = nameToLetters(readableName);
-    name = nameToLetters(name);
-  }
-
   return (
     <Box
       maxW={"350px"}
@@ -66,9 +51,7 @@ export const CollectibleCard: React.FC<CollectibleProps> = ({
           pos: "absolute",
           top: 5,
           left: 0,
-          backgroundImage: `url(${getAssetImageSource(
-            forCollection ? collectionData?.thumbnail : image
-          )})`,
+          backgroundImage: `url(${getAssetImageSource(image)})`,
           filter: "blur(15px)",
           zIndex: -1,
         }}
@@ -92,29 +75,28 @@ export const CollectibleCard: React.FC<CollectibleProps> = ({
                 />
               </Stack>
             }
-            src={getAssetImageSource(
-              forCollection ? collectionData?.thumbnail : image
-            )}
+            src={getAssetImageSource(image)}
           />
         </LazyLoad>
       </Box>
-
-      <Stack pt={10} align={"center"}>
-        <Stack direction={"row"} align={"center"}>
-          <Text fontWeight={800} fontSize={"xl"}>
-            {name ? name : readableName}
-          </Text>
-        </Stack>
-        {forCollection ? (
-          <>
-            <Text color={"gray.500"} fontSize={"sm"}>
-              Floor price :
-              {collectionData?.floor_price / 1000000 || "No data at the moment"}
+      {name ? (
+        <Stack pt={10} align={"center"}>
+          <Stack direction={"row"} align={"center"}>
+            <Text fontWeight={800} fontSize={"xl"}>
+              {name}
             </Text>
-            <CollectiblesInCollection collectibles={collectibles} />
-          </>
-        ) : null}
-      </Stack>
+          </Stack>
+
+          {forCollection ? (
+            <>
+              <Text color={"gray.500"} fontSize={"md"}>
+                Floor price : {collectionData?.floor_price / 1000000 || "N/A"}
+              </Text>
+              <CollectiblesInCollection collectibles={collectibles} />
+            </>
+          ) : null}
+        </Stack>
+      ) : null}
     </Box>
   );
 };

@@ -20,11 +20,13 @@ const Home: React.FC<HomeProps> = ({ address }) => {
   if (loading) return <Loader title={"Loading ..."} />;
   if (error) return <AlertMessage />;
 
-  if (!data.user) {
+  const { user } = data;
+
+  if (!user) {
     return <Username />;
   }
 
-  return <UserAssets address={address} />;
+  return <UserAssets address={address} username={user.username} />;
 };
 
 export default Home;

@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAxios from "axios-hooks";
 import { Loader } from "./Loader";
 import { AlertMessage } from "./AlertMessage";
 import _ from "lodash";
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { UserCollections } from "./UserCollections";
+import { SetStateWithPrev } from "../utils/SetStateWithPrev";
+import { useWallet } from "../hooks/UseWallet";
+import { capitalizeFirstLetter } from "../utils/UtilsConverter";
 
 interface AssetsProps {
   address: string;
+  username: string;
 }
 
-const UserAssets: React.FC<AssetsProps> = ({ address }) => {
+const UserAssets: React.FC<AssetsProps> = ({ address, username }) => {
+  const { setWallet } = useWallet();
+
+  useEffect(() => {
+    const setUsernameInState = async () => {
+      await SetStateWithPrev(setWallet, {
+        username: username,
+      });
+    };
+
+    setUsernameInState();
+  }, []);
+
   const [{ data, loading, error }] = useAxios({
     url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/blockfrost/units/${address}`,
   });
@@ -18,17 +34,16 @@ const UserAssets: React.FC<AssetsProps> = ({ address }) => {
   if (loading) return <Loader title={"Loading ..."} />;
   if (error) return <AlertMessage />;
 
-  const assetsByCollection = _.groupBy(
-    data.collectiblesWithMetaData,
-    "policy_id"
-  );
+  const { collectiblesWithMetaData } = data;
 
-  if (assetsByCollection) {
+  if (collectiblesWithMetaData.length > 0) {
+    const assetsByCollection = _.groupBy(collectiblesWithMetaData, "policy_id");
+
     return (
       <>
         <Box px={10} margin={10} w={"100%"}>
-          <Text fontWeight={800} fontSize={"xl"}>
-            Collections
+          <Text fontWeight={800} fontSize={"2xl"}>
+            <strong>{capitalizeFirstLetter(username)} collections</strong>
           </Text>
           <hr />
         </Box>
@@ -40,6 +55,7 @@ const UserAssets: React.FC<AssetsProps> = ({ address }) => {
           {Object.entries(assetsByCollection).map(
             ([policyId, collectibles]) => (
               <UserCollections
+                key={policyId}
                 policyId={policyId}
                 collectibles={collectibles}
               />
@@ -49,6 +65,7 @@ const UserAssets: React.FC<AssetsProps> = ({ address }) => {
       </>
     );
   }
+
   return <h1>No collectibles</h1>;
 };
 

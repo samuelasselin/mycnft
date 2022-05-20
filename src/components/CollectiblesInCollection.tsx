@@ -9,11 +9,13 @@ import {
   ModalFooter,
   Flex,
   useColorModeValue,
+  Box,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import { CollectibleType } from "../types/CollectiblesTypes";
 import { CollectibleCard } from "./CollectibleCard";
-import { Container } from "../components/Container";
+import { assetName } from "../utils/UtilsConverter";
 
 interface CollectionModalProps {
   collectibles: CollectibleType[];
@@ -35,17 +37,29 @@ export const CollectiblesInCollection: React.FC<CollectionModalProps> = ({
         <ModalContent>
           <ModalCloseButton zIndex={10} />
           <ModalBody bg={useColorModeValue("gray.50", "gray.900")}>
+            <Box margin={10}>
+              <Text fontWeight={800} fontSize={"2xl"}>
+                <strong>Collectibles ({collectibles.length})</strong>
+              </Text>
+              <hr />
+            </Box>
             <Flex
               justify={"center"}
               direction={["column", "column", "row", "row"]}
               wrap={"wrap"}
             >
               {collectibles.map((collectible, index) => {
+                const { onchain_metadata: onChainMetaData } = collectible;
+                const { image, name } = onChainMetaData;
+
+                const title = assetName(name, collectible.asset_name, false);
+
                 return (
                   <CollectibleCard
                     key={index}
                     forCollection={false}
-                    collectible={collectible}
+                    image={image}
+                    name={title}
                   />
                 );
               })}

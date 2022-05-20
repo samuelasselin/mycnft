@@ -11,17 +11,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const units = assetsUnit?.amount.filter((a) => a.quantity == "1");
 
-  const collectiblesWithMetaData = await Promise.all(
-    units.map(async (e) => {
-      return await BlockFrost.assetsById(e.unit as any);
-    })
-  );
+  if (units.length > 0) {
+    const collectiblesWithMetaData = await Promise.all(
+      units.map(async (e) => {
+        return await BlockFrost.assetsById(e.unit as any);
+      })
+    );
 
-  if (collectiblesWithMetaData.length > 0)
-    resHandler(res, 200, { collectiblesWithMetaData });
-  else {
-    resHandler(res, 200, { collectiblesWithMetaData: [] });
+    if (collectiblesWithMetaData.length > 0)
+      resHandler(res, 200, { collectiblesWithMetaData });
+    else {
+      emptyCollectibles(res);
+    }
+  } else {
+    emptyCollectibles(res);
   }
+};
+
+const emptyCollectibles = (res) => {
+  resHandler(res, 200, { collectiblesWithMetaData: [] });
 };
 
 export default handler;

@@ -11,13 +11,19 @@ import { Form, Formik } from "formik";
 import { InputField } from "../InputField";
 import axios from "axios";
 import { useWallet } from "../../hooks/UseWallet";
+import { useRouter } from "next/router";
 
 export const Username: React.FC = () => {
   const {
     wallet: { address },
   } = useWallet();
 
-  // TODO redirect
+  const router = useRouter();
+
+  const profilPage = () => {
+    router.reload();
+  };
+
   return (
     <Stack
       spacing={4}
@@ -35,7 +41,8 @@ export const Username: React.FC = () => {
         fontSize={{ base: "sm", sm: "md" }}
         color={useColorModeValue("gray.800", "gray.400")}
       >
-        Username will be use to access your <strong>mycnft.io/profile</strong>
+        It will be use to show your gallery
+        <strong> mycnft.io/username</strong>
       </Text>
       <Formik
         initialValues={{ username: "" }}
@@ -57,6 +64,7 @@ export const Username: React.FC = () => {
                 }
               });
             setSubmitting(false);
+            profilPage();
           }
         }}
       >
@@ -72,7 +80,7 @@ export const Username: React.FC = () => {
                 type="submit"
                 isLoading={isSubmitting}
               >
-                Create username
+                Chose username
               </Button>
             </Stack>
           </Form>

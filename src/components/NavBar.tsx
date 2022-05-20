@@ -7,11 +7,14 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import React from "react";
+import React, { useState } from "react";
 import { useWallet } from "../hooks/UseWallet";
 import { namiWalletSignIn } from "../utils/NamiWallet";
 import { CopyIcon } from "@chakra-ui/icons";
+import { AlertMessage } from "./AlertMessage";
 export const NavBar: React.FC = () => {
+  const [showAlert, setShowAlert] = useState(false);
+
   const { colorMode, toggleColorMode } = useColorMode();
   const { wallet, setWallet } = useWallet();
 
@@ -19,11 +22,19 @@ export const NavBar: React.FC = () => {
     await namiWalletSignIn(setWallet);
   };
 
-  const { isInstalled, syncWallet, address } = wallet;
+  const { isInstalled, syncWallet, address, username } = wallet;
 
   if (syncWallet && !address) {
     return <h1>Loading..</h1>;
   }
+
+  const shareProfil = () => {
+    navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_DOMAIN}/${username}`
+    );
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 2000);
+  };
 
   const handleButton = () => {
     if (!isInstalled) {
@@ -46,9 +57,7 @@ export const NavBar: React.FC = () => {
           fontSize="1xl"
           fontWeight="bold"
           colorScheme={"teal"}
-          onClick={() =>
-            navigator.clipboard.writeText("Copy this text to clipboard")
-          }
+          onClick={shareProfil}
         >
           Share profile
         </Button>
@@ -58,9 +67,14 @@ export const NavBar: React.FC = () => {
 
   return (
     <>
+      {showAlert ? (
+        <AlertMessage status={"success"} message={"Copied !"} hero={false} />
+      ) : null}
       <Box bg={useColorModeValue("gray.200", "gray.800")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box>MYNCFT</Box>
+          <Box>
+            <strong>MYCNFT beta</strong>
+          </Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               {handleButton()}

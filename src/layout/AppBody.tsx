@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
 import { Container } from "../components/Container";
-import { Heading, Stack, Text } from "@chakra-ui/react";
+import { Stack, Text } from "@chakra-ui/react";
 
 export const AppBody: React.FC<{}> = ({
   children,
@@ -22,7 +22,7 @@ export const AppBody: React.FC<{}> = ({
               </Text>
             </Stack>
             <Text color={"gray.500"} fontSize={"sm"}>
-              Collections data obtained from opencnft.io
+              Some data obtained from opencnft.io
             </Text>
           </Stack>
         </Footer>

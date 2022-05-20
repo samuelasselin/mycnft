@@ -24,7 +24,7 @@ export const CollectiblesByUsername: React.FC & { layout: any } = () => {
   const { user } = data;
 
   if (user) {
-    return <UserAssets address={user.address} />;
+    return <UserAssets address={user.address} username={user.username} />;
   }
 
   return <Hero title={"Request profile not found !"} />;
