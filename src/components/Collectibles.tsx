@@ -14,14 +14,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { CollectibleType } from "../types/CollectiblesTypes";
-import { CollectibleCard } from "./CollectibleCard";
+import { Collectible } from "./Collectible";
 import { assetName } from "../utils/UtilsConverter";
 
 interface CollectionModalProps {
   collectibles: CollectibleType[];
 }
 
-export const CollectiblesInCollection: React.FC<CollectionModalProps> = ({
+export const Collectibles: React.FC<CollectionModalProps> = ({
   collectibles,
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -55,7 +55,7 @@ export const CollectiblesInCollection: React.FC<CollectionModalProps> = ({
                 const title = assetName(name, collectible.asset_name, false);
 
                 return (
-                  <CollectibleCard
+                  <Collectible
                     key={index}
                     forCollection={false}
                     image={image}

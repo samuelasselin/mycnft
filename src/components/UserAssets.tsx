@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import useAxios from "axios-hooks";
-import { Loader } from "./Loader";
-import { AlertMessage } from "./AlertMessage";
+import { Loader } from "./body/Loader";
+import { AlertMessage } from "./body/AlertMessage";
 import _ from "lodash";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { UserCollections } from "./UserCollections";
+import { Collections } from "./Collections";
 import { SetStateWithPrev } from "../utils/SetStateWithPrev";
 import { useWallet } from "../hooks/UseWallet";
 import { capitalizeFirstLetter } from "../utils/UtilsConverter";
@@ -54,7 +54,7 @@ const UserAssets: React.FC<AssetsProps> = ({ address, username }) => {
         >
           {Object.entries(assetsByCollection).map(
             ([policyId, collectibles]) => (
-              <UserCollections
+              <Collections
                 key={policyId}
                 policyId={policyId}
                 collectibles={collectibles}

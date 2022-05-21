@@ -1,8 +1,8 @@
 import { Username } from "./forms/Username";
-import { Loader } from "./Loader";
+import { Loader } from "./body/Loader";
 import React from "react";
 import useAxios from "axios-hooks";
-import { AlertMessage } from "./AlertMessage";
+import { AlertMessage } from "./body/AlertMessage";
 import UserAssets from "./UserAssets";
 
 interface HomeProps {

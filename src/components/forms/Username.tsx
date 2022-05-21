@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Form, Formik } from "formik";
-import { InputField } from "../InputField";
+import { InputField } from "../body/InputField";
 import axios from "axios";
 import { useWallet } from "../../hooks/UseWallet";
 import { useRouter } from "next/router";

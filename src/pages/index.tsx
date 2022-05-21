@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Flex, Heading, Stack, Text, Image } from "@chakra-ui/react";
 import useAxios from "axios-hooks";
-import { CollectibleCard } from "../components/CollectibleCard";
-import { AlertMessage } from "../components/AlertMessage";
+import { Collectible } from "../components/Collectible";
+import { AlertMessage } from "../components/body/AlertMessage";
 import { useRouter } from "next/router";
 
 const Index: React.FC<{}> = () => {
@@ -82,7 +82,7 @@ const Index: React.FC<{}> = () => {
             const { thumbnail } = collection;
 
             return (
-              <CollectibleCard
+              <Collectible
                 key={index}
                 forCollection={false}
                 image={thumbnail}

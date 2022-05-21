@@ -8,8 +8,8 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
-import { useWallet } from "../hooks/UseWallet";
-import { namiWalletSignIn } from "../utils/NamiWallet";
+import { useWallet } from "../../hooks/UseWallet";
+import { namiWalletSignIn } from "../../utils/NamiWallet";
 import { CopyIcon } from "@chakra-ui/icons";
 import { AlertMessage } from "./AlertMessage";
 export const NavBar: React.FC = () => {

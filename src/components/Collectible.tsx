@@ -10,7 +10,7 @@ import React from "react";
 import { CollectibleType } from "../types/CollectiblesTypes";
 import { getAssetImageSource } from "../utils/IpfsConverter";
 import LazyLoad from "react-lazyload";
-import { CollectiblesInCollection } from "./CollectiblesInCollection";
+import { Collectibles } from "./Collectibles";
 
 interface CollectibleProps {
   collectionData?: any;
@@ -20,7 +20,7 @@ interface CollectibleProps {
   image: string;
 }
 
-export const CollectibleCard: React.FC<CollectibleProps> = ({
+export const Collectible: React.FC<CollectibleProps> = ({
   collectibles,
   forCollection,
   name,
@@ -94,7 +94,7 @@ export const CollectibleCard: React.FC<CollectibleProps> = ({
                   Floor price : {collectionData?.floor_price / 1000000 || "N/A"}
                 </strong>
               </Text>
-              <CollectiblesInCollection collectibles={collectibles} />
+              <Collectibles collectibles={collectibles} />
             </>
           ) : null}
         </Stack>

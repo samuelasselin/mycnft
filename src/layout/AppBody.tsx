@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
-import { Footer } from "../components/Footer";
-import { NavBar } from "../components/NavBar";
-import { Container } from "../components/Container";
+import { Footer } from "../components/body/Footer";
+import { NavBar } from "../components/body/NavBar";
+import { Container } from "../components/body/Container";
 import { Stack, Text } from "@chakra-ui/react";
 
 export const AppBody: React.FC<{}> = ({

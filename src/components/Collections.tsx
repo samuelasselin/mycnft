@@ -1,7 +1,7 @@
 import React from "react";
 import useAxios from "axios-hooks";
-import { AlertMessage } from "./AlertMessage";
-import { CollectibleCard } from "./CollectibleCard";
+import { AlertMessage } from "./body/AlertMessage";
+import { Collectible } from "./Collectible";
 import { CollectibleType } from "../types/CollectiblesTypes";
 import { assetName } from "../utils/UtilsConverter";
 
@@ -10,7 +10,7 @@ interface CollectibleByCollectionProps {
   collectibles: CollectibleType[];
 }
 
-export const UserCollections: React.FC<CollectibleByCollectionProps> = ({
+export const Collections: React.FC<CollectibleByCollectionProps> = ({
   policyId,
   collectibles,
 }) => {
@@ -29,7 +29,7 @@ export const UserCollections: React.FC<CollectibleByCollectionProps> = ({
 
   if (data) {
     return (
-      <CollectibleCard
+      <Collectible
         key={policyId}
         forCollection={true}
         collectibles={collectibles}
