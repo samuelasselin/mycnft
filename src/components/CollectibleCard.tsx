@@ -30,7 +30,7 @@ export const CollectibleCard: React.FC<CollectibleProps> = ({
   return (
     <Box
       maxW={"350px"}
-      minW={"350px"}
+      minW={"250px"}
       m={3}
       role={"group"}
       p={6}
