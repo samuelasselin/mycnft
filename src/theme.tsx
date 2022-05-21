@@ -11,6 +11,15 @@ const breakpoints = createBreakpoints({
 });
 
 const theme = extendTheme({
+  components: {
+    Modal: {
+      baseStyle: {
+        dialogContainer: {
+          "@supports(height: -webkit-fill-available)": {},
+        },
+      },
+    },
+  },
   colors: {
     black: "#16161D",
   },
