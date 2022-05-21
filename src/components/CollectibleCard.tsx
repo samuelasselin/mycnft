@@ -90,7 +90,9 @@ export const CollectibleCard: React.FC<CollectibleProps> = ({
           {forCollection ? (
             <>
               <Text color={"gray.500"} fontSize={"md"}>
-                Floor price : {collectionData?.floor_price / 1000000 || "N/A"}
+                <strong>
+                  Floor price : {collectionData?.floor_price / 1000000 || "N/A"}
+                </strong>
               </Text>
               <CollectiblesInCollection collectibles={collectibles} />
             </>
