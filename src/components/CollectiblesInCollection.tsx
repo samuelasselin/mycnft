@@ -36,7 +36,11 @@ export const CollectiblesInCollection: React.FC<CollectionModalProps> = ({
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton zIndex={10} />
-          <ModalBody bg={useColorModeValue("gray.50", "gray.900")}>
+          <ModalBody
+            bg={useColorModeValue("gray.50", "gray.900")}
+            maxHeight={"1000px"}
+            overflowY={"auto"}
+          >
             <Box margin={10}>
               <Text fontWeight={800} fontSize={"2xl"}>
                 <strong>Collectibles ({collectibles.length})</strong>
