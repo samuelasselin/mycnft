@@ -4,6 +4,7 @@ import useAxios from "axios-hooks";
 import { Collectible } from "../components/Collectible";
 import { AlertMessage } from "../components/body/AlertMessage";
 import { useRouter } from "next/router";
+import SimpleThreeColumns from "../components/Feature";
 
 const Index: React.FC<{}> = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const Index: React.FC<{}> = () => {
   const { ranking } = data;
 
   const getRandom = (arr, num) => {
-    const bestRanked = arr.slice(0, 20);
+    const bestRanked = arr.slice(0, 50);
     const shuffled = [...bestRanked].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, num);
   };
@@ -46,18 +47,23 @@ const Index: React.FC<{}> = () => {
                 zIndex: -1,
               }}
             >
-              MYCNFT
+              Your Cardano
             </Text>
-            <br /> <Text as={"span"}>Your digital arts gallery on Cardano</Text>{" "}
+            <br /> <Text as={"span"}>Digital arts gallery</Text>
           </Heading>
           <Text fontSize={{ base: "lg", lg: "xl" }}>
             Show your NFTs to whoever you want in seconds through your unique
-            link <strong>mycnft.io/yourusername</strong>. Take your
-            <strong> link</strong> wherever your audience is, and
-            <strong> bring to life your digital arts gallery ! </strong>
+            link !
+            <strong>
+              {" "}
+              Take your link wherever your audience is, and bring to life your
+              digital arts gallery !
+            </strong>
           </Text>
+          <SimpleThreeColumns />
           <Stack direction={{ base: "column", md: "row" }} spacing={4}>
             <Button
+              fontWeight="bold"
               rounded={"full"}
               bg={"teal"}
               color={"white"}
@@ -66,14 +72,13 @@ const Index: React.FC<{}> = () => {
               }}
               onClick={profilPage}
             >
-              Start now
+              Get started for free !
             </Button>
           </Stack>
         </Stack>
       </Flex>
       {data ? (
         <Flex
-          justify={"center"}
           direction={["column", "column", "row", "row"]}
           wrap={"wrap"}
           maxWidth={"800px"}
