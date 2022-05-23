@@ -5,6 +5,7 @@ import { Collectible } from "../components/Collectible";
 import { AlertMessage } from "../components/body/AlertMessage";
 import { useRouter } from "next/router";
 import SimpleThreeColumns from "../components/Feature";
+import { isMobile } from "react-device-detect";
 
 const Index: React.FC<{}> = () => {
   const router = useRouter();
@@ -77,7 +78,7 @@ const Index: React.FC<{}> = () => {
           </Stack>
         </Stack>
       </Flex>
-      {data ? (
+      {data && !isMobile ? (
         <Flex
           direction={["column", "column", "row", "row"]}
           wrap={"wrap"}
