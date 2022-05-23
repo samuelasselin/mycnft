@@ -5,8 +5,8 @@ import { Loader } from "../../components/body/Loader";
 import React, { useEffect } from "react";
 import Home from "../../components/Home";
 import { namiWalletSignIn } from "../../utils/NamiWallet";
-import { Text } from "@chakra-ui/react";
 import { HeroWmessage } from "../../components/body/HeadingWmessage";
+import { isMobile } from "react-device-detect";
 
 const Index: React.FC & { layout: any } = () => {
   const { setWallet, wallet } = useWallet();
@@ -20,6 +20,14 @@ const Index: React.FC & { layout: any } = () => {
 
   const { isInstalled, address, walletLoading, syncWallet } = wallet;
 
+  if (isMobile)
+    return (
+      <Hero
+        title={
+          "We cant register you on mobile, please use a chrome-based browser to continue !"
+        }
+      />
+    );
   if (walletLoading) return <Loader title={"Loading ..."} />;
   if (!isInstalled)
     return (
