@@ -16,8 +16,8 @@ export const HeroWmessage: React.FC<HeroWmessageProps> = ({
     height="55vh"
     direction={"column"}
   >
-    <Heading fontSize="2vw">{title}</Heading>
-    <Text mt={5} fontSize="1vw">
+    <Heading fontSize="2xl">{title}</Heading>
+    <Text mt={5} fontSize="md">
       {message}
     </Text>
   </Flex>
