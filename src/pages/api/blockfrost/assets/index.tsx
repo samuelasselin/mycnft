@@ -1,11 +1,8 @@
-import dbConnect from "../../../../middleware/DbConnect";
 import { resHandler } from "../../../../middleware/ResHandler";
 import { BlockFrost } from "../../../../middleware/BlockFrost";
 
 const handler = async (req, res) => {
   const { method } = req;
-
-  await dbConnect();
 
   switch (method) {
     case "POST":

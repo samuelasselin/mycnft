@@ -56,10 +56,11 @@ export const Collectibles: React.FC<CollectionModalProps> = ({
 
                 return (
                   <Collectible
+                    collectibleData={collectible}
                     key={index}
-                    forCollection={false}
                     image={image}
                     name={title}
+                    sharable={true}
                   />
                 );
               })}

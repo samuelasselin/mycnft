@@ -1,5 +1,6 @@
 import {
   Box,
+  IconButton,
   Image,
   Spinner,
   Stack,
@@ -11,22 +12,42 @@ import { CollectibleType } from "../types/CollectiblesTypes";
 import { getAssetImageSource } from "../utils/IpfsConverter";
 import LazyLoad from "react-lazyload";
 import { Collectibles } from "./Collectibles";
+import { GrShare } from "react-icons/gr";
+import { Icon } from "@chakra-ui/react";
+import { useWallet } from "../hooks/UseWallet";
 
 interface CollectibleProps {
-  collectionData?: any;
+  collectibleData?: CollectibleType;
   collectibles?: CollectibleType[];
-  forCollection: boolean;
+  collectionData?: any;
+  forCollection?: boolean;
+  sharable?: boolean;
   name: string;
   image: string;
 }
 
 export const Collectible: React.FC<CollectibleProps> = ({
   collectibles,
-  forCollection,
+  forCollection = false,
+  sharable = false,
   name,
   image,
   collectionData,
+  collectibleData,
 }) => {
+  const { wallet } = useWallet();
+  const { username } = wallet;
+
+  const shareCollectible = () => {
+    const { asset } = collectibleData;
+
+    if (asset) {
+      navigator.clipboard.writeText(
+        `${process.env.NEXT_PUBLIC_DOMAIN}/asset/${asset}?username=${username}`
+      );
+    }
+  };
+
   return (
     <Box
       maxW={"350px"}
@@ -96,6 +117,16 @@ export const Collectible: React.FC<CollectibleProps> = ({
               </Text>
               <Collectibles collectibles={collectibles} />
             </>
+          ) : null}
+
+          {sharable ? (
+            <IconButton
+              colorScheme="teal"
+              aria-label="Copied url"
+              size="sm"
+              icon={<Icon as={GrShare} />}
+              onClick={shareCollectible}
+            />
           ) : null}
         </Stack>
       ) : null}

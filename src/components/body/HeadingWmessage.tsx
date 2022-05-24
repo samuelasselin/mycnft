@@ -15,6 +15,8 @@ export const HeroWmessage: React.FC<HeroWmessageProps> = ({
     alignItems="center"
     height="55vh"
     direction={"column"}
+    textAlign={"center"}
+    p={10}
   >
     <Heading fontSize="2xl">{title}</Heading>
     <Text mt={5} fontSize="md">

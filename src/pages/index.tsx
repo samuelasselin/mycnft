@@ -87,14 +87,7 @@ const Index: React.FC<{}> = () => {
           {getRandom(ranking, 4).map((collection, index) => {
             const { thumbnail } = collection;
 
-            return (
-              <Collectible
-                key={index}
-                forCollection={false}
-                image={thumbnail}
-                name={null}
-              />
-            );
+            return <Collectible key={index} image={thumbnail} name={null} />;
           })}
         </Flex>
       ) : null}

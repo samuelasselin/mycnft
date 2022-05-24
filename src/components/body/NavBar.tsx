@@ -5,13 +5,15 @@ import {
   useColorModeValue,
   Stack,
   useColorMode,
+  Icon,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import React, { useState } from "react";
 import { useWallet } from "../../hooks/UseWallet";
 import { namiWalletSignIn } from "../../utils/NamiWallet";
-import { CopyIcon } from "@chakra-ui/icons";
 import { AlertMessage } from "./AlertMessage";
+import { GrShare } from "react-icons/gr";
+import { alertMessageTimeOutHandler } from "../../utils/AlertMessage";
 export const NavBar: React.FC = () => {
   const [showAlert, setShowAlert] = useState(false);
 
@@ -32,8 +34,7 @@ export const NavBar: React.FC = () => {
     navigator.clipboard.writeText(
       `${process.env.NEXT_PUBLIC_DOMAIN}/${username}`
     );
-    setShowAlert(true);
-    setTimeout(() => setShowAlert(false), 2000);
+    alertMessageTimeOutHandler(setShowAlert, 2000);
   };
 
   const handleButton = () => {
@@ -53,7 +54,7 @@ export const NavBar: React.FC = () => {
     } else {
       return (
         <Button
-          leftIcon={<CopyIcon />}
+          leftIcon={<Icon as={GrShare} />}
           fontSize="1xl"
           fontWeight="bold"
           colorScheme={"teal"}
