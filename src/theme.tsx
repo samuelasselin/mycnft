@@ -25,6 +25,7 @@ const theme = extendTheme({
   },
   fonts,
   breakpoints,
+  initialColorMode: "dark",
 });
 
 export default theme;
