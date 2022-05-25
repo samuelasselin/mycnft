@@ -14,7 +14,10 @@ import { namiWalletSignIn } from "../../utils/NamiWallet";
 import { AlertMessage } from "./AlertMessage";
 import { GrShare } from "react-icons/gr";
 import { alertMessageTimeOutHandler } from "../../utils/AlertMessage";
+import { useRouter } from "next/router";
 export const NavBar: React.FC = () => {
+  const router = useRouter();
+
   const [showAlert, setShowAlert] = useState(false);
 
   const { colorMode, toggleColorMode } = useColorMode();
@@ -37,9 +40,22 @@ export const NavBar: React.FC = () => {
     alertMessageTimeOutHandler(setShowAlert, 2000);
   };
 
-  const handleButton = () => {
+  const createProfile = () => {
+    router.push("/profile");
+  };
+
+  const handleNavBarButton = () => {
     if (!isInstalled) {
-      return;
+      return (
+        <Button
+          fontSize="1xl"
+          fontWeight="bold"
+          colorScheme={"teal"}
+          onClick={() => createProfile()}
+        >
+          Create your gallery now !
+        </Button>
+      );
     } else if (isInstalled && !syncWallet) {
       return (
         <Button
@@ -60,7 +76,7 @@ export const NavBar: React.FC = () => {
           colorScheme={"teal"}
           onClick={shareProfil}
         >
-          Share profile
+          Share gallery
         </Button>
       );
     }
@@ -78,7 +94,7 @@ export const NavBar: React.FC = () => {
           </Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              {handleButton()}
+              {handleNavBarButton()}
               <Button onClick={toggleColorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>

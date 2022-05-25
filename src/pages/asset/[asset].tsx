@@ -44,7 +44,7 @@ export const Asset: React.FC & { layout: any } = () => {
             colorScheme="teal"
             textAlign={"center"}
           >
-            Take a look at {username} profile
+            Checkout {username} gallery
           </Button>
         ) : null}
       </Stack>

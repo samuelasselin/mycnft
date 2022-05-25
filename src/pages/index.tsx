@@ -24,8 +24,7 @@ const Index: React.FC<{}> = () => {
     return shuffled.slice(0, num);
   };
 
-  const profilPage = (e) => {
-    e.preventDefault();
+  const profilPage = () => {
     router.push("/profile");
   };
 
@@ -57,7 +56,7 @@ const Index: React.FC<{}> = () => {
             link !
             <strong>
               {" "}
-              Take your link wherever your audience is, and bring to life your
+              Take your link wherever your audience is and bring to life your
               digital arts gallery !
             </strong>
           </Text>

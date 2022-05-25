@@ -122,7 +122,7 @@ export const Collectible: React.FC<CollectibleProps> = ({
           {sharable ? (
             <IconButton
               colorScheme="teal"
-              aria-label="Copied url"
+              aria-label="Copy url"
               size="sm"
               icon={<Icon as={GrShare} />}
               onClick={shareCollectible}
