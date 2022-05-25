@@ -46,16 +46,7 @@ export const NavBar: React.FC = () => {
 
   const handleNavBarButton = () => {
     if (!isInstalled) {
-      return (
-        <Button
-          fontSize="1xl"
-          fontWeight="bold"
-          colorScheme={"teal"}
-          onClick={() => createProfile()}
-        >
-          Create your gallery now !
-        </Button>
-      );
+      return;
     } else if (isInstalled && !syncWallet) {
       return (
         <Button
