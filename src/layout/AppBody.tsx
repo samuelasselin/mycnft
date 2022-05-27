@@ -20,10 +20,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="og:image:width" content="650" />
         <meta property="og:image:height" content="650" />
-        <meta
-          property="og:description"
-          content="From where does the modern Western world derive its values and morals?"
-        />
+        <meta property="og:description" content="MYCNFTS" />
         <meta
           property="og:image:secure_url"
           content={getAssetImageSource(image)}
