@@ -1,4 +1,11 @@
-import { createContext, Dispatch, SetStateAction, useContext } from "react";
+import {
+  createContext,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 export interface walletProps {
   isInstalled: boolean;
@@ -13,15 +20,31 @@ interface useWalletProps {
   setWallet?: Dispatch<SetStateAction<walletProps>>;
 }
 
-export const WalletContext = createContext<useWalletProps>({
-  wallet: {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const WalletContext = createContext<useWalletProps | null>(null);
+
+export const useWallet = (): useWalletProps => {
+  const context = useContext(WalletContext);
+  if (context === null) {
+    throw new Error("useWallet must be used within a WalletProvider");
+  }
+  return context;
+};
+
+export const WalletProvider: FC<Props> = ({ children }): JSX.Element => {
+  const [wallet, setWallet] = useState<walletProps>({
+    username: null,
+    walletLoading: false,
     syncWallet: false,
     isInstalled: false,
-    walletLoading: false,
-    username: null,
-  },
-});
+  });
 
-export const useWallet = () => {
-  return useContext(WalletContext);
+  const value = { wallet, setWallet };
+
+  return (
+    <WalletContext.Provider value={value}>{children}</WalletContext.Provider>
+  );
 };
