@@ -3,14 +3,30 @@ import { Footer } from "../components/body/Footer";
 import { NavBar } from "../components/body/NavBar";
 import { Container } from "../components/body/Container";
 import { Stack, Text } from "@chakra-ui/react";
+import Head from "next/head";
+import { getAssetImageSource } from "../utils/IpfsConverter";
 
-export const AppBody: React.FC<{}> = ({
-  children,
-}: {
+interface AppBodyProps {
   children: ReactNode;
-}) => {
+  image?: string;
+}
+
+export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
   return (
     <>
+      <Head>
+        <title>MyCnfts</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="og:title" content="test" key="ogtitle" />
+        {image && (
+          <meta
+            property="og:image"
+            content={getAssetImageSource(image)}
+            key="ogimage"
+          />
+        )}
+      </Head>
       <NavBar />
       <Container minHeight="100vh">
         {children}

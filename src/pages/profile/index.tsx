@@ -8,7 +8,7 @@ import { namiWalletSignIn } from "../../utils/NamiWallet";
 import { HeroWmessage } from "../../components/body/HeadingWmessage";
 import { BrowserView, MobileView } from "react-device-detect";
 
-const Index: React.FC & { layout: any } = () => {
+const Index: React.FC<{}> = () => {
   const { setWallet, wallet } = useWallet();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const Index: React.FC & { layout: any } = () => {
   };
 
   return (
-    <>
+    <AppBody>
       <MobileView>
         <Hero
           title={
@@ -46,10 +46,8 @@ const Index: React.FC & { layout: any } = () => {
         />
       </MobileView>
       <BrowserView>{handleBrowserView()}</BrowserView>
-    </>
+    </AppBody>
   );
 };
 
 export default Index;
-
-Index.layout = AppBody;
