@@ -17,7 +17,6 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
       <Head>
         <title>MyCnfts</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="MyCnfts" />
         <meta name="og:image:width" content="650" />
@@ -30,7 +29,10 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
           name="twitter:description"
           content="API used for listing all the region, province, city, municipality, barangay, and its data. Philippine Standard Geographic Codes (PSGC) data came from Philippine Statistics Authority."
         />
-        <meta name="twitter:image" content={getAssetImageSource(image)} />
+        <meta
+          name="twitter:image"
+          content="https://infura-ipfs.io/ipfs/QmQupzL4BMuJvLvPgYAt46C1oUT8dxFsTBk5RVx6pTxRKn"
+        />
       </Head>
       <NavBar />
       <Container minHeight="100vh">
