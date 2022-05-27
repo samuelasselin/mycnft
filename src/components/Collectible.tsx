@@ -1,6 +1,5 @@
 import {
   Box,
-  IconButton,
   Image,
   Spinner,
   Stack,
@@ -12,9 +11,8 @@ import { CollectibleType } from "../types/CollectiblesTypes";
 import { getAssetImageSource } from "../utils/IpfsConverter";
 import LazyLoad from "react-lazyload";
 import { Collectibles } from "./Collectibles";
-import { GrShare } from "react-icons/gr";
-import { Icon } from "@chakra-ui/react";
 import { useWallet } from "../hooks/UseWallet";
+import { TwitterShare } from "./TwitterShare";
 
 interface CollectibleProps {
   collectibleData?: CollectibleType;
@@ -39,11 +37,15 @@ export const Collectible: React.FC<CollectibleProps> = ({
   const { username } = wallet;
 
   const shareCollectible = () => {
-    const { asset } = collectibleData;
+    if (sharable) {
+      const { asset } = collectibleData;
 
-    if (asset) {
-      navigator.clipboard.writeText(
-        `${process.env.NEXT_PUBLIC_DOMAIN}/asset/${asset}?username=${username}`
+      return (
+        <TwitterShare
+          hashtags={["Cardano", "MyCnfts"]}
+          title={"Checkout my new Nft !"}
+          url={`${process.env.NEXT_PUBLIC_DOMAIN}/asset/${asset}?username=${username}`}
+        />
       );
     }
   };
@@ -118,16 +120,7 @@ export const Collectible: React.FC<CollectibleProps> = ({
               <Collectibles collectibles={collectibles} />
             </>
           ) : null}
-
-          {sharable ? (
-            <IconButton
-              colorScheme="teal"
-              aria-label="Copy url"
-              size="sm"
-              icon={<Icon as={GrShare} />}
-              onClick={shareCollectible}
-            />
-          ) : null}
+          {shareCollectible()}
         </Stack>
       ) : null}
     </Box>
