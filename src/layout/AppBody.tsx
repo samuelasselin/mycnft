@@ -17,7 +17,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
       <Head>
         <title>MyCnfts</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:image:alt" content="MyCnfts" />
         <meta name="og:image:width" content="650" />
         <meta name="og:image:height" content="650" />
