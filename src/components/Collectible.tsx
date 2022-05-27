@@ -114,7 +114,7 @@ export const Collectible: React.FC<CollectibleProps> = ({
             <>
               <Text color={"gray.500"} fontSize={"md"}>
                 <strong>
-                  Floor price : {collectionData?.floor_price / 1000000 || "N/A"}
+                  Floor price : {collectionData?.floor_price / 1000000 || "N/A "}
                 </strong>
               </Text>
               <Collectibles collectibles={collectibles} />

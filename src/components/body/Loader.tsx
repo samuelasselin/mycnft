@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Spinner, Flex, Heading } from "@chakra-ui/react";
+import { Stack, Spinner, Flex } from "@chakra-ui/react";
 
 interface LoaderProps {
   title: string;
