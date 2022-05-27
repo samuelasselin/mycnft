@@ -23,7 +23,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta property="og:description" content="MYCNFTS" />
         <meta
           property="og:image:secure_url"
-          content={getAssetImageSource(image)}
+          content="https://infura-ipfs.io/ipfs/QmQupzL4BMuJvLvPgYAt46C1oUT8dxFsTBk5RVx6pTxRKn"
         />
       </Head>
       <NavBar />
