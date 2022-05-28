@@ -28,7 +28,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image, url }) => {
           content="https://og-image.vercel.app/Hello%20World.png"
         />
         {/*TWITTER*/}
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content="MyCnfts" />
         <meta name="twitter:description" content="MyCnfts description" />
         <meta
