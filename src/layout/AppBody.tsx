@@ -17,12 +17,20 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
       <Head>
         <title>MyCnfts</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        {/*FACEBOOK*/}
+        <meta property="og:title" content="MyCnfts" />
+        <meta property="og:description" content="MyCnfts description" />
         <meta
           property="og:image"
           content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
             image
           )}`}
         />
+        {/*TWITTER*/}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image:alt" content="" />
+        <meta name="twitter:title" content="MyCnfts" />
+        <meta name="twitter:description" content="MyCnfts description" />
         <meta
           name="twitter:image"
           content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
