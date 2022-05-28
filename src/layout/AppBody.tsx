@@ -24,7 +24,9 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         {image ? (
           <meta
             name="twitter:image"
-            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/metaImage?image=${image}`}
+            content={`${
+              process.env.NEXT_PUBLIC_DOMAIN
+            }/api/metaImage?image=${getAssetImageSource(image)}`}
           />
         ) : null}
       </Head>
