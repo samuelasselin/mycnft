@@ -9,7 +9,7 @@ import { getAssetImageSource } from "../utils/IpfsConverter";
 interface AppBodyProps {
   children: ReactNode;
   image?: string;
-  url: string;
+  url?: string;
 }
 
 export const AppBody: React.FC<AppBodyProps> = ({ children, image, url }) => {
