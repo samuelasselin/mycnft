@@ -25,7 +25,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`https://mycnft.vercel.app/api/og-image?name=${url}`}
+          content={`https://og-image.vercel.app/Hello%20World.png`}
         />
         {/*TWITTER*/}
         <meta name="twitter:card" content="summary_large_image" />
@@ -34,7 +34,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:description" content="MyCnfts description" />
         <meta
           name="twitter:image"
-          content={`https://mycnft.vercel.app/api/og-image?name=${url}`}
+          content={`https://og-image.vercel.app/Hello%20World.png`}
         />
       </Head>
       <NavBar />
