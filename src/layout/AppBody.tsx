@@ -23,14 +23,11 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:description" content="Nft description" />
 
         <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}
+          name="twitter:image"
+          content={
+            "https://mycnft.vercel.app/api/og-image?name=Next.js&stage=adopt"
+          }
         />
-
-        {/*<meta*/}
-        {/*  name="twitter:image"*/}
-        {/*  content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}*/}
-        {/*/>*/}
       </Head>
       <NavBar />
       <Container minHeight="100vh">
