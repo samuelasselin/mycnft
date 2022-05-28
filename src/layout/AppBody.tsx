@@ -24,12 +24,11 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image, url }) => {
         // TODO
         <meta property="og:url" content={url} />
         <meta
-          property="og:image"
+          property="og:image:secure_url"
           content="https://og-image.vercel.app/Hello%20World.png"
         />
         {/*TWITTER*/}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image:alt" content="" />
         <meta name="twitter:title" content="MyCnfts" />
         <meta name="twitter:description" content="MyCnfts description" />
         <meta
