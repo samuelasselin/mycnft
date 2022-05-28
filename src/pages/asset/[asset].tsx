@@ -37,7 +37,10 @@ export const Asset: React.FC<{}> = () => {
     const title = assetName(name, collectible.asset_name, false);
 
     return (
-      <AppBody image={image}>
+      <AppBody
+        image={image}
+        url={`${process.env.NEXT_PUBLIC_DOMAIN}/asset/${asset}?username=${username}`}
+      >
         <Stack mt={16} align={"center"}>
           <Collectible
             key={collectible.asset_name}

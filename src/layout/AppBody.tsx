@@ -9,11 +9,10 @@ import { getAssetImageSource } from "../utils/IpfsConverter";
 interface AppBodyProps {
   children: ReactNode;
   image?: string;
+  url: string;
 }
 
-export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
-  const url = getAssetImageSource(image);
-
+export const AppBody: React.FC<AppBodyProps> = ({ children, image, url }) => {
   return (
     <>
       <Head>
@@ -21,11 +20,12 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         {/*FACEBOOK*/}
         <meta property="og:title" content="MyCnfts" />
-        <meta property="og:description" content="MyCnfts description" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="siteweb" />
+        // TODO
+        <meta property="og:url" content={url} />
         <meta
           property="og:image"
-          content={`https://og-image.vercel.app/Hello%20World.png`}
+          content="https://og-image.vercel.app/Hello%20World.png"
         />
         {/*TWITTER*/}
         <meta name="twitter:card" content="summary_large_image" />
