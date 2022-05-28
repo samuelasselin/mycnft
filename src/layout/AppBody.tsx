@@ -22,7 +22,10 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:title" content="Nft title" />
         <meta name="twitter:description" content="Nft description" />
         {image ? (
-          <meta name="twitter:image" content={getAssetImageSource(image)} />
+          <meta
+            name="twitter:image"
+            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/metaImage?image=${image}`}
+          />
         ) : null}
       </Head>
       <NavBar />
