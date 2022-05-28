@@ -31,7 +31,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         />
         <meta
           name="twitter:image"
-          content="https://infura-ipfs.io/ipfs/QmQupzL4BMuJvLvPgYAt46C1oUT8dxFsTBk5RVx6pTxRKn"
+          content="https://images.theconversation.com/files/417198/original/file-20210820-25-1j3afhs.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop"
         />
       </Head>
       <NavBar />
