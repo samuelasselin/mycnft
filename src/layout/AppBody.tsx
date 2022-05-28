@@ -19,13 +19,13 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
           property="og:image"
-          content={`https://mycnft.vercel.app/api/og-image?name${getAssetImageSource(
+          content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
             image
           )}`}
         />
         <meta
           name="twitter:image"
-          content={`https://mycnft.vercel.app/api/og-image?name${getAssetImageSource(
+          content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
             image
           )}`}
         />
