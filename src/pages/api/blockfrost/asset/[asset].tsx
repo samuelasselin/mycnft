@@ -6,10 +6,10 @@ const handler = async (req, res) => {
     query: { asset },
   } = req;
 
-  const collectible = await BlockFrost.assetsById(asset);
-
-  if (collectible) resHandler(res, 200, { collectible });
-  else {
+  try {
+    const collectible = await BlockFrost.assetsById(asset);
+    if (collectible) resHandler(res, 200, { collectible });
+  } catch (e) {
     emptyCollectible(res);
   }
 };

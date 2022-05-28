@@ -11,6 +11,10 @@ export const CollectiblesByUsername: React.FC & { layout: any } = () => {
   const router = useRouter();
   const { username } = router.query;
 
+  if (!username) {
+    return <Loader title={`Loading ...`} />;
+  }
+
   const userData = JSON.stringify({ username });
 
   const [{ data, loading, error }] = useAxios({

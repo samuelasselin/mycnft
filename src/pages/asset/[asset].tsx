@@ -10,8 +10,11 @@ import { Button, Stack } from "@chakra-ui/react";
 
 export const Asset: React.FC<{}> = () => {
   const router = useRouter();
-
   const { asset, username } = router.query;
+
+  if (!asset) {
+    return <Loader title={`Loading ...`} />;
+  }
 
   const [{ data, loading, error }] = useAxios({
     url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/blockfrost/asset/${asset}`,

@@ -12,6 +12,8 @@ interface AppBodyProps {
 }
 
 export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
+  const url = getAssetImageSource(image);
+
   return (
     <>
       <Head>
@@ -20,11 +22,10 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         {/*FACEBOOK*/}
         <meta property="og:title" content="MyCnfts" />
         <meta property="og:description" content="MyCnfts description" />
+        <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
-            image
-          )}`}
+          content={`https://mycnft.vercel.app/api/og-image?name=${url}`}
         />
         {/*TWITTER*/}
         <meta name="twitter:card" content="summary_large_image" />
@@ -33,9 +34,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:description" content="MyCnfts description" />
         <meta
           name="twitter:image"
-          content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
-            image
-          )}`}
+          content={`https://mycnft.vercel.app/api/og-image?name=${url}`}
         />
       </Head>
       <NavBar />
