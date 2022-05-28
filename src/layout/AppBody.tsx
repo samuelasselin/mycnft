@@ -21,12 +21,16 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:image:alt" content="MyCnfts" />
         <meta name="twitter:title" content="Nft title" />
         <meta name="twitter:description" content="Nft description" />
-        {image ? (
-          <meta
-            name="twitter:image"
-            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}
-          />
-        ) : null}
+
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}
+        />
+
+        <meta
+          name="twitter:image"
+          content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}
+        />
       </Head>
       <NavBar />
       <Container minHeight="100vh">
