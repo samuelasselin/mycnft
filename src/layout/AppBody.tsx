@@ -17,7 +17,7 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
       <Head>
         <title>MyCnfts</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image:alt" content="MyCnfts" />
         <meta name="twitter:title" content="Nft title" />
         <meta name="twitter:description" content="Nft description" />
@@ -27,10 +27,10 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
           content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}
         />
 
-        <meta
-          name="twitter:image"
-          content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}
-        />
+        {/*<meta*/}
+        {/*  name="twitter:image"*/}
+        {/*  content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?name=Next.js&stage=adopt`}*/}
+        {/*/>*/}
       </Head>
       <NavBar />
       <Container minHeight="100vh">
