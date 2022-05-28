@@ -21,7 +21,10 @@ export const AppBody: React.FC<AppBodyProps> = ({ children, image }) => {
         <meta name="twitter:image:alt" content="MyCnfts" />
         <meta name="twitter:title" content="Nft title" />
         <meta name="twitter:description" content="Nft description" />
-        <meta name="twitter:image" content={getAssetImageSource(image)} />
+        <meta
+          name="twitter:image"
+          content="https://cf-ipfs.com/ipfs/QmfSJYRLgXDEa55df8iXzrkciRRSS5MTQjXk515eCdg398"
+        />
       </Head>
       <NavBar />
       <Container minHeight="100vh">
