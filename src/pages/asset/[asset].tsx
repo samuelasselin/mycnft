@@ -39,9 +39,7 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
           <meta name="twitter:description" content="MyCnfts" />
           <meta
             name="twitter:image"
-            content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
-              image
-            )}`}
+            content={"https://og-image.vercel.app/Hello%20World.png"}
           />
         </Head>
         <Stack mt={16} align={"center"}>
