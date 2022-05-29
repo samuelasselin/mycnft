@@ -45,7 +45,7 @@ export const Asset: React.FC<{}> = () => {
           <meta name="twitter:description" content="MyCnfts description" />
           <meta
             name="twitter:image"
-            content="https://og-image.vercel.app/Hello%20World.png"
+            content="https://images.theconversation.com/files/417198/original/file-20210820-25-1j3afhs.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
           />
         </Head>
         <Stack mt={16} align={"center"}>
