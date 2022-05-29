@@ -40,12 +40,12 @@ export const Asset: React.FC<{}> = () => {
     return (
       <AppBody>
         <Head>
-          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="MyCnfts" />
           <meta name="twitter:description" content="MyCnfts description" />
           <meta
             name="twitter:image"
-            content={`https://og-image.vercel.app/Hello%20World.png`}
+            content="https://og-image.vercel.app/Hello%20World.png"
           />
         </Head>
         <Stack mt={16} align={"center"}>
