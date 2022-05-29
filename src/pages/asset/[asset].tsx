@@ -29,18 +29,16 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
     const { image, name } = onChainMetaData;
 
     const title = assetName(name, collectible.asset_name, false);
+    const imgSrc = getAssetImageSource(image);
 
     return (
       <AppBody>
         <Head>
           <title>MyCnfts</title>
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={`${name}`} />
+          <meta name="twitter:title" content={`${title}`} />
           <meta name="twitter:description" content="MyCnfts" />
-          <meta
-            name="twitter:image"
-            content={"https://og-image.vercel.app/Hello%20World.png"}
-          />
+          <meta name="twitter:image" content={`${imgSrc}`} />
         </Head>
         <Stack mt={16} align={"center"}>
           <Collectible
