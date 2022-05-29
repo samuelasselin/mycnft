@@ -10,6 +10,7 @@ import { Button, Stack } from "@chakra-ui/react";
 import Head from "next/head";
 import axios from "axios";
 import { CollectibleType } from "../../types/CollectiblesTypes";
+import { getAssetImageSource } from "../../utils/IpfsConverter";
 
 interface AssetProps {
   collectible: CollectibleType;
@@ -34,12 +35,13 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
         <Head>
           <title>MyCnfts</title>
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@tamronn" />
-          <meta name="twitter:title" content="Title" />
-          <meta name="twitter:description" content="Description" />
+          <meta name="twitter:title" content={name} />
+          <meta name="twitter:description" content="MyCnfts" />
           <meta
             name="twitter:image"
-            content="https://images.theconversation.com/files/417198/original/file-20210820-25-1j3afhs.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
+            content={`https://mycnft.vercel.app/api/og-image?name=${getAssetImageSource(
+              image
+            )}`}
           />
         </Head>
         <Stack mt={16} align={"center"}>
