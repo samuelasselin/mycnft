@@ -35,7 +35,7 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
         <Head>
           <title>MyCnfts</title>
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={name} />
+          <meta name="twitter:title" content={`${name}`} />
           <meta name="twitter:description" content="MyCnfts" />
           <meta
             name="twitter:image"
