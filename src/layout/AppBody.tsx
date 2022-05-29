@@ -15,27 +15,6 @@ interface AppBodyProps {
 export const AppBody: React.FC<AppBodyProps> = ({ children, image, url }) => {
   return (
     <>
-      <Head>
-        <title>MyCnfts</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        {/*FACEBOOK*/}
-        <meta property="og:title" content="MyCnfts" />
-        <meta property="og:type" content="siteweb" />
-        // TODO
-        <meta property="og:url" content={url} />
-        <meta
-          property="og:image:secure_url"
-          content="https://og-image.vercel.app/Hello%20World.png"
-        />
-        {/*TWITTER*/}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="MyCnfts" />
-        <meta name="twitter:description" content="MyCnfts description" />
-        <meta
-          name="twitter:image"
-          content={`https://og-image.vercel.app/Hello%20World.png`}
-        />
-      </Head>
       <NavBar />
       <Container minHeight="100vh">
         {children}

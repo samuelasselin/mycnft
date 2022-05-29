@@ -7,6 +7,7 @@ import AppBody from "../../layout/AppBody";
 import { assetName } from "../../utils/UtilsConverter";
 import { Collectible } from "../../components/Collectible";
 import { Button, Stack } from "@chakra-ui/react";
+import Head from "next/head";
 
 export const Asset: React.FC<{}> = () => {
   const router = useRouter();
@@ -37,10 +38,16 @@ export const Asset: React.FC<{}> = () => {
     const title = assetName(name, collectible.asset_name, false);
 
     return (
-      <AppBody
-        image={image}
-        url={`${process.env.NEXT_PUBLIC_DOMAIN}/asset/${asset}?username=${username}`}
-      >
+      <AppBody>
+        <Head>
+          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:title" content="MyCnfts" />
+          <meta name="twitter:description" content="MyCnfts description" />
+          <meta
+            name="twitter:image"
+            content={`https://og-image.vercel.app/Hello%20World.png`}
+          />
+        </Head>
         <Stack mt={16} align={"center"}>
           <Collectible
             key={collectible.asset_name}
