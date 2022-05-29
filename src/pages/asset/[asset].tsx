@@ -8,24 +8,16 @@ import { assetName } from "../../utils/UtilsConverter";
 import { Collectible } from "../../components/Collectible";
 import { Button, Stack } from "@chakra-ui/react";
 import Head from "next/head";
+import axios from "axios";
+import { CollectibleType } from "../../types/CollectiblesTypes";
 
-export const Asset: React.FC<{}> = () => {
+interface AssetProps {
+  collectible: CollectibleType;
+  username: string;
+}
+
+export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
   const router = useRouter();
-  const { asset, username } = router.query;
-
-  if (!asset) {
-    return <Loader title={`Loading ...`} />;
-  }
-
-  const [{ data, loading, error }] = useAxios({
-    url: `${process.env.NEXT_PUBLIC_DOMAIN}/api/blockfrost/asset/${asset}`,
-    method: "GET",
-  });
-
-  if (loading) return <Loader title={`Loading ...`} />;
-  if (error) return <AlertMessage />;
-
-  const { collectible } = data;
 
   const profilePage = () => {
     router.push(`/${username}`);
@@ -74,3 +66,14 @@ export const Asset: React.FC<{}> = () => {
 };
 
 export default Asset;
+
+export async function getServerSideProps(context) {
+  const { asset, username } = context.query;
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_DOMAIN}/api/blockfrost/asset/${asset}`
+  );
+
+  const { collectible } = response.data;
+  return { props: { collectible: collectible, username: username } };
+}
