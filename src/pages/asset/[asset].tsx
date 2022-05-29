@@ -40,9 +40,11 @@ export const Asset: React.FC<{}> = () => {
     return (
       <AppBody>
         <Head>
+          <title>MyCnfts</title>
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="MyCnfts" />
-          <meta name="twitter:description" content="MyCnfts description" />
+          <meta name="twitter:site" content="@tamronn" />
+          <meta name="twitter:title" content="Title" />
+          <meta name="twitter:description" content="Description" />
           <meta
             name="twitter:image"
             content="https://images.theconversation.com/files/417198/original/file-20210820-25-1j3afhs.jpeg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip"
