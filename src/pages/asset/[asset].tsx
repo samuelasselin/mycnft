@@ -38,7 +38,12 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={`${title}`} />
           <meta name="twitter:description" content="MyCnfts" />
-          <meta name="twitter:image" content={`${imgSrc}`} />
+          <meta
+            name="twitter:image"
+            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?src=${imgSrc}`}
+          />
+          {/*https://inthepocket.tech/api/og-image?name=Next.js*/}
+          {/*https://og-image.vercel.app/Hello%20World.png*/}
         </Head>
         <Stack mt={16} align={"center"}>
           <Collectible
@@ -61,6 +66,7 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
       </AppBody>
     );
   }
+  return <Loader title={"Loading ..."} />;
 };
 
 export default Asset;
@@ -73,5 +79,10 @@ export async function getServerSideProps(context) {
   );
 
   const { collectible } = response.data;
-  return { props: { collectible: collectible, username: username } };
+
+  if (collectible && username) {
+    return { props: { collectible: collectible, username: username } };
+  } else {
+    return { props: { collectible: null, username: null } };
+  }
 }

@@ -1,11 +1,17 @@
 import { withOGImage } from "next-api-og-image";
 
 interface QueryParams {
-  name: string;
+  src: string;
 }
 
 export default withOGImage<"query", QueryParams>({
   template: {
-    react: ({ name }) => <div>🔥 {name}</div>,
+    react: ({ src }) => (
+      <html>
+        <body>
+          <img src={src} width="350" height="350" alt="Nft" />
+        </body>
+      </html>
+    ),
   },
 });

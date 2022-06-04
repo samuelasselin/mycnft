@@ -8,7 +8,7 @@ export const getAssetImageSource = (image) => {
 };
 
 const linkToSrc = (link, base64 = false) => {
-  let root = "https://cf-ipfs.com/ipfs";
+  let root = "https://infura-ipfs.io/ipfs";
 
   const base64regex =
     /^([0-9a-zA-Z+/]{4})*(([0-9a-zA-Z+/]{2}==)|([0-9a-zA-Z+/]{3}=))?$/;
