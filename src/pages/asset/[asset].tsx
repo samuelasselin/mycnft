@@ -42,8 +42,6 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
             name="twitter:image"
             content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?src=${imgSrc}`}
           />
-          {/*https://inthepocket.tech/api/og-image?name=Next.js*/}
-          {/*https://og-image.vercel.app/Hello%20World.png*/}
         </Head>
         <Stack mt={16} align={"center"}>
           <Collectible

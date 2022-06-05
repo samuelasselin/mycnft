@@ -5,7 +5,6 @@ interface QueryParams {
 }
 
 const style = `
-
     html, body {
         height: 100%;
         margin:0;
@@ -13,6 +12,7 @@ const style = `
     }
       
     div {
+        background-color: #f7fafc
         position:relative;
         height: 100%;
         width:100%;
