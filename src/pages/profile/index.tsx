@@ -8,7 +8,7 @@ import { namiWalletSignIn } from "../../utils/NamiWallet";
 import { HeroWmessage } from "../../components/body/HeadingWmessage";
 import { BrowserView, MobileView } from "react-device-detect";
 
-const Index: React.FC & { layout: any } = () => {
+const Index: React.FC<{}> = () => {
   const { setWallet, wallet } = useWallet();
 
   useEffect(() => {
@@ -37,19 +37,13 @@ const Index: React.FC & { layout: any } = () => {
   };
 
   return (
-    <>
+    <AppBody title="Checkout MyCnfts art gallery !">
       <MobileView>
-        <Hero
-          title={
-            "We cant register you on mobile, please use a chrome-based browser !"
-          }
-        />
+        <Hero title={"We cant register you on mobile !"} />
       </MobileView>
       <BrowserView>{handleBrowserView()}</BrowserView>
-    </>
+    </AppBody>
   );
 };
 
 export default Index;
-
-Index.layout = AppBody;
