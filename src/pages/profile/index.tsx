@@ -37,13 +37,9 @@ const Index: React.FC<{}> = () => {
   };
 
   return (
-    <AppBody>
+    <AppBody title="Checkout MyCnfts art gallery !">
       <MobileView>
-        <Hero
-          title={
-            "We cant register you on mobile, please use a chrome-based browser !"
-          }
-        />
+        <Hero title={"We cant register you on mobile !"} />
       </MobileView>
       <BrowserView>{handleBrowserView()}</BrowserView>
     </AppBody>

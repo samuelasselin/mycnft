@@ -1,13 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
-import useAxios from "axios-hooks";
 import { Loader } from "../../components/body/Loader";
-import { AlertMessage } from "../../components/body/AlertMessage";
 import AppBody from "../../layout/AppBody";
 import { assetName } from "../../utils/UtilsConverter";
 import { Collectible } from "../../components/Collectible";
 import { Button, Stack } from "@chakra-ui/react";
-import Head from "next/head";
 import axios from "axios";
 import { CollectibleType } from "../../types/CollectiblesTypes";
 import { getAssetImageSource } from "../../utils/IpfsConverter";
@@ -32,17 +29,7 @@ export const Asset: React.FC<AssetProps> = ({ collectible, username }) => {
     const imgSrc = getAssetImageSource(image);
 
     return (
-      <AppBody>
-        <Head>
-          <title>MyCnfts</title>
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={`${title}`} />
-          <meta name="twitter:description" content="MyCnfts" />
-          <meta
-            name="twitter:image"
-            content={`${process.env.NEXT_PUBLIC_DOMAIN}/api/og-image?src=${imgSrc}`}
-          />
-        </Head>
+      <AppBody imgSrc={imgSrc} title={title}>
         <Stack mt={16} align={"center"}>
           <Collectible
             key={collectible.asset_name}
