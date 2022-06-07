@@ -56,7 +56,7 @@ export const NavBar: React.FC = () => {
       <Box bg={useColorModeValue("gray.200", "gray.800")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
-            <strong>Mycnfts beta</strong>
+            <strong>MyCnfts beta</strong>
           </Box>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
