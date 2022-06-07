@@ -41,8 +41,8 @@ export const Username: React.FC = () => {
         fontSize={{ base: "sm", sm: "md" }}
         color={useColorModeValue("gray.800", "gray.400")}
       >
-        It will be use to show your gallery
-        <strong> mycnft.io/username</strong>
+        It will be your gallery link
+        <strong> mcnfts.art/username</strong>
       </Text>
       <Formik
         initialValues={{ username: "" }}
